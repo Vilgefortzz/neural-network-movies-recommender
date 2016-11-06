@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 public class Controller{
 
-    private FileReader file;
     private ArrayList<String> movies;
     private ArrayList<String> ratings;
     private ArrayList<String> users;
@@ -32,7 +31,7 @@ public class Controller{
 
     public void readInputData() {
 
-        file = new FileReader("movies.dat");
+        FileReader file = new FileReader("movies.dat");
         movies = file.getLines();
 
         file = new FileReader("ratings.dat");
@@ -57,21 +56,22 @@ public class Controller{
         for (int i=0;i<usersNumber;i++){
 
             String[] info2 = users.get(i).split("::");
-            usersLikes[i] = info2[1];
+            usersLikes[i] = info2[2];
         }
 
         int k=0;
         int index = 0;
 
+        // Wartość oczekiwana jaka ma być
         for (int i=0; i<inputData.length; i++){
 
             inputData[i][index++] = Double.parseDouble(usersLikes[k]);
             inputData[i][index++] = Double.parseDouble(moviesRatings[i]);
 
             if (Double.parseDouble(moviesRatings[i]) >= 7.0)
-                inputData[i][index] = 1.0;
+                inputData[i][index] = 1;
             else
-                inputData[i][index] = 0.0;
+                inputData[i][index] = 0;
 
             index = 0;
         }
@@ -90,20 +90,20 @@ public class Controller{
         mcCullochPittsNeuron = new McCullochPittsNeuron(inputData);
     }
 
-    public void learningMcCullohPittsNeuron(int parameters){
+    public void learningMcCullohPittsNeuron(int parameters, int attempts){
 
         if (parameters == 1)
             mcCullochPittsNeuron.applyLearningRuleOneParametr();
         else if (parameters == 2)
-            mcCullochPittsNeuron.applyLearningRuleTwoParameters();
+            mcCullochPittsNeuron.applyLearningRuleTwoParameters(attempts);
 
     }
 
-    public void learningPerceptron(int parameters){
+    public void learningPerceptron(int parameters, int attempts){
 
         if (parameters == 1)
             perceptron.applyLearningRuleOneParametr();
         else if (parameters == 2)
-            perceptron.applyLearningRuleTwoParameters();
+            perceptron.applyLearningRuleTwoParameters(attempts);
     }
 }

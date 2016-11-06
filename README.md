@@ -22,7 +22,7 @@ i polecał jak najtrafniej filmy danemu użytkownikowi.
     Podproblem do rozwiązania: Wybranie pięciu filmów o jakiejś ocenie w skali od 0-10 
     a następnie na podstawie oceny jakiegoś filmu przez użytkownika sklasyfikowanie filmów 
     o mniejszej ocenie i większej. Filmy, które można mu polecić a których nie można.
-    Do uczenia zostanie wykorzystana perceptron. Do modyfikowania wag wykorzystana zostanie
+    Do uczenia zostanie wykorzystany perceptron. Do modyfikowania wag wykorzystana zostanie
     reguła Widrowa – Hoffa (reguła delta)
 
 [2] Implementacja sieci wielowarstwowych - współpracujące ze sobą neurony i wzajemnie się 

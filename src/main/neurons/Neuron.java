@@ -49,6 +49,18 @@ public abstract class Neuron {
         return outSignal;
     }
 
+    public void setW1(double w1) {
+        this.w1 = w1;
+    }
+
+    public void setW2(double w2) {
+        this.w2 = w2;
+    }
+
+    public void setBias(double bias) {
+        this.bias = bias;
+    }
+
     // Sumator sygnałów wejściowych
 
     public void computeSumSignalsTwoParameters(double w1, double w2, double x1, double x2, double bias) {
@@ -84,5 +96,5 @@ public abstract class Neuron {
 
     // ustawienie metody uczenia z dwoma parametrami
 
-    public abstract void applyLearningRuleTwoParameters();
+    public abstract void applyLearningRuleTwoParameters(int attempts);
 }

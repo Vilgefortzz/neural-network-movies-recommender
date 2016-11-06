@@ -1,0 +1,100 @@
+Attempt number: 0
+Number of epochs/iterations: 20
+Attempt number: 1
+Number of epochs/iterations: 9
+Attempt number: 2
+Number of epochs/iterations: 30
+Attempt number: 3
+Number of epochs/iterations: 17
+Attempt number: 4
+Number of epochs/iterations: 11
+Attempt number: 5
+Number of epochs/iterations: 9
+Attempt number: 6
+Number of epochs/iterations: 6
+Attempt number: 7
+Number of epochs/iterations: 10
+Attempt number: 8
+Number of epochs/iterations: 14
+Attempt number: 9
+Number of epochs/iterations: 7
+Attempt number: 10
+Number of epochs/iterations: 15
+Attempt number: 11
+Number of epochs/iterations: 5
+Attempt number: 12
+Number of epochs/iterations: 10
+Attempt number: 13
+Number of epochs/iterations: 12
+Attempt number: 14
+Number of epochs/iterations: 25
+Attempt number: 15
+Number of epochs/iterations: 11
+Attempt number: 16
+Number of epochs/iterations: 10
+Attempt number: 17
+Number of epochs/iterations: 3
+Attempt number: 18
+Number of epochs/iterations: 25
+Attempt number: 19
+Number of epochs/iterations: 25
+Attempt number: 20
+Number of epochs/iterations: 10
+Attempt number: 21
+Number of epochs/iterations: 11
+Attempt number: 22
+Number of epochs/iterations: 11
+Attempt number: 23
+Number of epochs/iterations: 14
+Attempt number: 24
+Number of epochs/iterations: 26
+Attempt number: 25
+Number of epochs/iterations: 11
+Attempt number: 26
+Number of epochs/iterations: 8
+Attempt number: 27
+Number of epochs/iterations: 5
+Attempt number: 28
+Number of epochs/iterations: 9
+Attempt number: 29
+Number of epochs/iterations: 12
+Attempt number: 30
+Number of epochs/iterations: 23
+Attempt number: 31
+Number of epochs/iterations: 16
+Attempt number: 32
+Number of epochs/iterations: 9
+Attempt number: 33
+Number of epochs/iterations: 9
+Attempt number: 34
+Number of epochs/iterations: 9
+Attempt number: 35
+Number of epochs/iterations: 5
+Attempt number: 36
+Number of epochs/iterations: 9
+Attempt number: 37
+Number of epochs/iterations: 9
+Attempt number: 38
+Number of epochs/iterations: 4
+Attempt number: 39
+Number of epochs/iterations: 25
+Attempt number: 40
+Number of epochs/iterations: 9
+Attempt number: 41
+Number of epochs/iterations: 20
+Attempt number: 42
+Number of epochs/iterations: 9
+Attempt number: 43
+Number of epochs/iterations: 35
+Attempt number: 44
+Number of epochs/iterations: 6
+Attempt number: 45
+Number of epochs/iterations: 10
+Attempt number: 46
+Number of epochs/iterations: 30
+Attempt number: 47
+Number of epochs/iterations: 17
+Attempt number: 48
+Number of epochs/iterations: 5
+Attempt number: 49
+Number of epochs/iterations: 25

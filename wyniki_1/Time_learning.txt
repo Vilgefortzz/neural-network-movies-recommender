@@ -1,0 +1,100 @@
+Attempt number: 0
+Time in nanoseconds: 256280853
+Attempt number: 1
+Time in nanoseconds: 83439641
+Attempt number: 2
+Time in nanoseconds: 295325695
+Attempt number: 3
+Time in nanoseconds: 289578876
+Attempt number: 4
+Time in nanoseconds: 132843127
+Attempt number: 5
+Time in nanoseconds: 111805526
+Attempt number: 6
+Time in nanoseconds: 42734217
+Attempt number: 7
+Time in nanoseconds: 66643944
+Attempt number: 8
+Time in nanoseconds: 116260402
+Attempt number: 9
+Time in nanoseconds: 58654506
+Attempt number: 10
+Time in nanoseconds: 131631155
+Attempt number: 11
+Time in nanoseconds: 32604368
+Attempt number: 12
+Time in nanoseconds: 77317769
+Attempt number: 13
+Time in nanoseconds: 94629218
+Attempt number: 14
+Time in nanoseconds: 221673352
+Attempt number: 15
+Time in nanoseconds: 112430757
+Attempt number: 16
+Time in nanoseconds: 69853917
+Attempt number: 17
+Time in nanoseconds: 18698331
+Attempt number: 18
+Time in nanoseconds: 186584312
+Attempt number: 19
+Time in nanoseconds: 216869511
+Attempt number: 20
+Time in nanoseconds: 75209433
+Attempt number: 21
+Time in nanoseconds: 72489124
+Attempt number: 22
+Time in nanoseconds: 86734291
+Attempt number: 23
+Time in nanoseconds: 102715734
+Attempt number: 24
+Time in nanoseconds: 211709005
+Attempt number: 25
+Time in nanoseconds: 85016403
+Attempt number: 26
+Time in nanoseconds: 70417138
+Attempt number: 27
+Time in nanoseconds: 35608213
+Attempt number: 28
+Time in nanoseconds: 71551705
+Attempt number: 29
+Time in nanoseconds: 96277397
+Attempt number: 30
+Time in nanoseconds: 202931827
+Attempt number: 31
+Time in nanoseconds: 120151629
+Attempt number: 32
+Time in nanoseconds: 65542734
+Attempt number: 33
+Time in nanoseconds: 68615003
+Attempt number: 34
+Time in nanoseconds: 65441380
+Attempt number: 35
+Time in nanoseconds: 32561175
+Attempt number: 36
+Time in nanoseconds: 101820653
+Attempt number: 37
+Time in nanoseconds: 80744136
+Attempt number: 38
+Time in nanoseconds: 37379129
+Attempt number: 39
+Time in nanoseconds: 194025070
+Attempt number: 40
+Time in nanoseconds: 65275022
+Attempt number: 41
+Time in nanoseconds: 155196620
+Attempt number: 42
+Time in nanoseconds: 80390038
+Attempt number: 43
+Time in nanoseconds: 263799443
+Attempt number: 44
+Time in nanoseconds: 42399363
+Attempt number: 45
+Time in nanoseconds: 78263741
+Attempt number: 46
+Time in nanoseconds: 239160993
+Attempt number: 47
+Time in nanoseconds: 119276648
+Attempt number: 48
+Time in nanoseconds: 40127236
+Attempt number: 49
+Time in nanoseconds: 197984294
