@@ -9,10 +9,10 @@ public class FileReader {
 
     private ArrayList<String> lines;
 
-    public FileReader(String file) {
+    public FileReader(String path) {
 
         try {
-            readFile(file);
+            readFile(path);
         } catch (IOException | NullPointerException e) {
             System.err.println("Loading file is failed!!");
             System.exit(0);
@@ -23,13 +23,13 @@ public class FileReader {
         return lines;
     }
 
-    private void readFile(String fileName) throws IOException, NullPointerException {
+    private void readFile(String path) throws IOException, NullPointerException {
 
         lines = new ArrayList<>();
 
         try (
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(
-                        getClass().getResourceAsStream("/learning_set/" + fileName)))
+                        getClass().getResourceAsStream(path)))
         ) {
             while (bufferedReader.ready()){
                 lines.add(bufferedReader.readLine());

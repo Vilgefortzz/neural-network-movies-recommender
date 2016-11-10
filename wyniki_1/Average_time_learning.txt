@@ -1,1 +1,1 @@
-Average time learning after all attempts: 115493481
+Average time learning after all attempts: 35720084

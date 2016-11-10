@@ -33,7 +33,7 @@ public class FilesSave {
                 BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
                 PrintWriter out = new PrintWriter(bufferedWriter)
         ) {
-            String addToFile = "Attempt number: " + attempt + "\n" + "Epoch number: " + epoch + "\n" + "MAPE value: " + value;
+            String addToFile = "Attempt number: " + attempt + "\n" + "Epoch number: " + epoch + "\n" + "MAPE value: " + value + "%";
             out.println(addToFile);
 
         } catch (IOException ex) {

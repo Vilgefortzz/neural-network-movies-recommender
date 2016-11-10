@@ -113,13 +113,7 @@ public class Perceptron extends Neuron{
 
                     // Wyliczenie mape (błędu procentowego)
 
-                    if (expectedOutSignal != 0){
-
-                        tmpMape += Math.abs(error/expectedOutSignal);
-                    }
-                    else
-                        n--;
-
+                    tmpMape += Math.abs(error);
 
                     if(error!=0){
                         isDone=false;
@@ -127,6 +121,7 @@ public class Perceptron extends Neuron{
                     }
 
                     System.out.println("Oczekiwana: " + inputData[k][2] + " Otrzymana: " + outSignal);
+                    System.out.println(k);
 
                     w1 = updateWeight(w1, LEARNING_RATE, error, inputData[k][0]);
                     w2 = updateWeight(w2, LEARNING_RATE, error, inputData[k][1]);
@@ -134,14 +129,14 @@ public class Perceptron extends Neuron{
                 }
 
                 mse = tmpMse/(double)inputData.length;
-                mape = tmpMape*100./(double)(n!=0?n:1);
+                mape = tmpMape*100./(double)inputData.length;
 
                 saveMse(i,j,mse);
                 saveMape(i,j,mape);
 
                 System.out.println("Iteracja "+(j-1)+" liczba bledow: "+countErrors);
                 System.out.println("MSE: " + mse);
-                System.out.println("MAPE: " + mape);
+                System.out.println("MAPE: " + mape + "%");
 
             } while(!isDone);
 
@@ -152,12 +147,12 @@ public class Perceptron extends Neuron{
             saveTime(i, tRes);
             saveEpochNumbers(i, j);
 
+            // Zostawiam ostatnią próbę aby testować już na zmodyfikowanych wagach
             if (i != attempts-1){
                 this.setW1(((double)new Random().nextInt(11))/10.0);
                 this.setW2(((double)new Random().nextInt(11))/10.0);
                 this.setBias(0);
             }
-
         }
 
         saveAverageTime(attempts);
@@ -179,6 +174,13 @@ public class Perceptron extends Neuron{
     public double testOneParameter(double x1){
 
         computeSumSignalsOneParametr(w1,x1,bias);
+        computeOutSignal();
+        return outSignal;
+    }
+
+    public double testValidation(double x1, double x2){
+
+        computeSumSignalsTwoParameters(w1,w2,x1,x2,bias);
         computeOutSignal();
         return outSignal;
     }

@@ -8,11 +8,17 @@ import java.util.ArrayList;
 
 public class Controller{
 
+    // All files - too much data
     private ArrayList<String> movies;
     private ArrayList<String> ratings;
+
+    // Files which have cut ( to learn and validate )
+    private ArrayList<String> moviesLearn;
+    private ArrayList<String> moviesValidate;
     private ArrayList<String> users;
 
-    private double[][] inputData;
+    private double[][] inputDataLearn;
+    private double[][] inputDataValidate;
 
     // McCullochPitts
 
@@ -26,30 +32,42 @@ public class Controller{
 
         this.movies = new ArrayList<>();
         this.ratings = new ArrayList<>();
+
+        this.moviesLearn = new ArrayList<>();
+        this.moviesValidate = new ArrayList<>();
         this.users = new ArrayList<>();
+    }
+
+    public double[][] getInputDataValidate() {
+        return inputDataValidate;
     }
 
     public void readInputData() {
 
-        FileReader file = new FileReader("movies.dat");
-        movies = file.getLines();
+        FileReader file = new FileReader("/data_set/movies.dat");
+        this.movies = file.getLines();
 
-        file = new FileReader("ratings.dat");
-        ratings = file.getLines();
+        file = new FileReader("/data_set/learning_set/movies.dat");
+        this.moviesLearn = file.getLines();
 
-        file = new FileReader("users.dat");
-        users = file.getLines();
+        file = new FileReader("/data_set/validation_set/movies.dat");
+        this.moviesValidate = file.getLines();
+
+        file = new FileReader("/data_set/learning_set/users.dat");
+        this.users = file.getLines();
+
+        // Finally moviesLearn + users and their rates = learning set
     }
 
-    public void generateData(int moviesNumber, int usersNumber, int parameters) {
+    public void generateLearningData(int moviesNumber, int usersNumber, int parameters) {
 
         String[] moviesRatings = new String[moviesNumber];
         String[] usersLikes = new String[usersNumber];
-        inputData = new double[moviesNumber][parameters+1]; // o jeden więcej gdyż jeszcze wartość oczekiwana
+        inputDataLearn = new double[moviesNumber][parameters+1]; // o jeden więcej gdyż jeszcze wartość oczekiwana
 
         for (int i=0;i<moviesNumber;i++){
 
-            String[] info1 = movies.get(i).split("::");
+            String[] info1 = moviesLearn.get(i).split("::");
             moviesRatings[i] = info1[3];
         }
 
@@ -63,22 +81,53 @@ public class Controller{
         int index = 0;
 
         // Wartość oczekiwana jaka ma być
-        for (int i=0; i<inputData.length; i++){
+        for (int i = 0; i< inputDataLearn.length; i++){
 
-            inputData[i][index++] = Double.parseDouble(usersLikes[k]);
-            inputData[i][index++] = Double.parseDouble(moviesRatings[i]);
+            inputDataLearn[i][index++] = Double.parseDouble(usersLikes[k]);
+            inputDataLearn[i][index++] = Double.parseDouble(moviesRatings[i]);
 
-            if (Double.parseDouble(moviesRatings[i]) >= 7.0)
-                inputData[i][index] = 1;
+            if (Double.parseDouble(moviesRatings[i]) >= Double.parseDouble(usersLikes[k]))
+                inputDataLearn[i][index] = 1;
             else
-                inputData[i][index] = 0;
+                inputDataLearn[i][index] = 0;
+
+            index = 0;
+        }
+    }
+
+    public void generateValidationData(int moviesNumber, int usersNumber, int parameters) {
+
+        String[] moviesRatings = new String[moviesNumber];
+        String[] usersLikes = new String[usersNumber];
+        inputDataValidate = new double[moviesNumber][parameters]; // normalnie nie ma oczekiwanej wartości
+
+        for (int i = 0; i < moviesNumber; i++) {
+
+            String[] info1 = moviesValidate.get(i).split("::");
+            moviesRatings[i] = info1[3];
+        }
+
+        for (int i = 0; i < usersNumber; i++) {
+
+            String[] info2 = users.get(i).split("::");
+            usersLikes[i] = info2[2];
+        }
+
+        int k = 0;
+        int index = 0;
+
+        // Wartości do testowania
+        for (int i = 0; i < inputDataValidate.length; i++) {
+
+            inputDataValidate[i][index++] = Double.parseDouble(usersLikes[k]);
+            inputDataValidate[i][index] = Double.parseDouble(moviesRatings[i]);
 
             index = 0;
         }
     }
 
     public void createPerceptron() {
-        perceptron = new Perceptron(inputData);
+        perceptron = new Perceptron(inputDataLearn);
     }
 
     public void createPerceptron(double[][] inputData){
@@ -87,7 +136,7 @@ public class Controller{
     }
 
     public void createMcCullochPittsNeuron() {
-        mcCullochPittsNeuron = new McCullochPittsNeuron(inputData);
+        mcCullochPittsNeuron = new McCullochPittsNeuron(inputDataLearn);
     }
 
     public void learningMcCullohPittsNeuron(int parameters, int attempts){

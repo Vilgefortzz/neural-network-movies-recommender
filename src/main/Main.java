@@ -42,14 +42,36 @@ public class Main {
         Controller controller = new Controller();
 
         controller.readInputData();
-        controller.generateData(10,1,2);
 
+        // Wygenerowanie zestawu uczącego z pliku
+        controller.generateLearningData(100,1,2); // ilość filmów, ilość użytkowików, ilość parametrów
+
+        // Uczenie perceptronu
         controller.createPerceptron();
-        controller.learningPerceptron(2,50);
+        controller.learningPerceptron(2,50); // ilość parametrów, ilość prób - powtarzanie uczenia
 
-        System.out.println("FILMS->>>>>>>>>>>>>>>>>>>");
-        System.out.println("TEST: x1: " + 7 + " x2: " + 6.5 + ": " + controller.perceptron.testTwoParameters(7, 6.5));
-        System.out.println("TEST: x1: " + 7 + " x2: " + 7.7 + ": " + controller.perceptron.testTwoParameters(7, 7.7));
-        System.out.println("TEST: x1: " + 7 + " x2: " + 6.9 + ": " + controller.perceptron.testTwoParameters(7, 6.9));
+        // Wygenerowanie zestawu danych walidujących z pliku
+        controller.generateValidationData(30,1,2);
+
+        // Walidacja/Testowanie sieci przy użyciu zestawu danych walidujących z pliku
+
+        double[][] validation_data = controller.getInputDataValidate();
+
+        System.out.println("<<<<<<<<<<<<<<<< FILMS VALIDATION - RECOMMENDATION >>>>>>>>>>>>>>>>>");
+        int test_number = 1;
+
+        for (int i=0;i<validation_data.length;i++){
+
+            double signal = controller.perceptron.testValidation(validation_data[i][0], validation_data[i][1]);
+            String respond = ""; // recommended or not
+
+            if (signal == 1)
+                respond = "Recommended";
+            else if (signal == 0)
+                respond = "Not recommended";
+
+            System.out.println("TEST " + test_number + ": " + "x1: " + validation_data[i][0] + " x2: " + validation_data[i][1] + ": " + respond);
+            test_number++;
+        }
     }
 }
