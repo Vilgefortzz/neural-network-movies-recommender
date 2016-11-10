@@ -8,8 +8,8 @@ import java.util.Date;
 
 public class FilesSave {
 
-    public static long averageTime = 0;
-    public static double averageEpochs = 0;
+    private static long averageTime = 0;
+    private static double averageEpochs = 0;
 
     public static void saveMse(int attempt, int epoch, double value){
 
@@ -57,15 +57,15 @@ public class FilesSave {
             }
     }
 
-    public static void saveEpochNumbers(int attempt, int epochs_number){
+    public static void saveNumberOfEpochs(int attempt, int numberOfEpochs){
 
         try (
                 FileWriter fileWriter = new FileWriter("wyniki_1/Number_of_epochs.txt", true);
                 BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
                 PrintWriter out = new PrintWriter(bufferedWriter)
         ) {
-            String addToFile = "Attempt number: " + attempt + "\n" + "Number of epochs/iterations: " + epochs_number;
-            averageEpochs+=epochs_number;
+            String addToFile = "Attempt number: " + attempt + "\n" + "Number of epochs/iterations: " + numberOfEpochs;
+            averageEpochs+=numberOfEpochs;
             out.println(addToFile);
 
         } catch (IOException ex) {
@@ -73,7 +73,7 @@ public class FilesSave {
         }
     }
 
-    public static void saveAverageEpochs(int attempts){
+    public static void saveAverageNumberOfEpochs(int attempts){
 
         try (
                 FileWriter fileWriter = new FileWriter("wyniki_1/Average_number_of_epochs.txt", false);

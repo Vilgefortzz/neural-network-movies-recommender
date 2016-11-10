@@ -2,11 +2,11 @@ package main;
 
 import main.io.FileReader;
 import main.neurons.McCullochPittsNeuron;
-import main.neurons.Perceptron;
+import main.networks.Perceptron;
 
 import java.util.ArrayList;
 
-public class Controller{
+public class Controller {
 
     // All files - too much data
     private ArrayList<String> movies;
@@ -59,19 +59,19 @@ public class Controller{
         // Finally moviesLearn + users and their rates = learning set
     }
 
-    public void generateLearningData(int moviesNumber, int usersNumber, int parameters) {
+    public void generateLearningData(int numberOfMovies, int numberOfUsers, int parameters) {
 
-        String[] moviesRatings = new String[moviesNumber];
-        String[] usersLikes = new String[usersNumber];
-        inputDataLearn = new double[moviesNumber][parameters+1]; // o jeden więcej gdyż jeszcze wartość oczekiwana
+        String[] moviesRatings = new String[numberOfMovies];
+        String[] usersLikes = new String[numberOfUsers];
+        inputDataLearn = new double[numberOfMovies][parameters+1]; // o jeden więcej gdyż jeszcze wartość oczekiwana
 
-        for (int i=0;i<moviesNumber;i++){
+        for (int i=0;i<numberOfMovies;i++){
 
             String[] info1 = moviesLearn.get(i).split("::");
             moviesRatings[i] = info1[3];
         }
 
-        for (int i=0;i<usersNumber;i++){
+        for (int i=0;i<numberOfUsers;i++){
 
             String[] info2 = users.get(i).split("::");
             usersLikes[i] = info2[2];
@@ -95,19 +95,19 @@ public class Controller{
         }
     }
 
-    public void generateValidationData(int moviesNumber, int usersNumber, int parameters) {
+    public void generateValidationData(int numberOfMovies, int numberOfUsers, int parameters) {
 
-        String[] moviesRatings = new String[moviesNumber];
-        String[] usersLikes = new String[usersNumber];
-        inputDataValidate = new double[moviesNumber][parameters]; // normalnie nie ma oczekiwanej wartości
+        String[] moviesRatings = new String[numberOfMovies];
+        String[] usersLikes = new String[numberOfUsers];
+        inputDataValidate = new double[numberOfMovies][parameters]; // normalnie nie ma oczekiwanej wartości
 
-        for (int i = 0; i < moviesNumber; i++) {
+        for (int i = 0; i < numberOfMovies; i++) {
 
             String[] info1 = moviesValidate.get(i).split("::");
             moviesRatings[i] = info1[3];
         }
 
-        for (int i = 0; i < usersNumber; i++) {
+        for (int i = 0; i < numberOfUsers; i++) {
 
             String[] info2 = users.get(i).split("::");
             usersLikes[i] = info2[2];
@@ -137,6 +137,11 @@ public class Controller{
 
     public void createMcCullochPittsNeuron() {
         mcCullochPittsNeuron = new McCullochPittsNeuron(inputDataLearn);
+    }
+
+    public void createMcCullochPittsNeuron(double[][] inputData){
+
+        mcCullochPittsNeuron = new McCullochPittsNeuron(inputData);
     }
 
     public void learningMcCullohPittsNeuron(int parameters, int attempts){
