@@ -1,22 +1,34 @@
-package main.neurons;
+package main.networks;
+
+import main.neurons.Neuron;
 
 import java.util.Random;
 
 import static main.io.FilesSave.*;
 
-public class Perceptron extends Neuron{
+public class Perceptron extends Neuron {
 
     public Perceptron(double[][] inputData) {
         super(inputData);
     }
 
+    public Perceptron() {
+        super();
+    }
+
     @Override
     protected double activationFunction(double sumSignal) {
 
-        if (sumSignal>=0)
-            return 1;
+        // Binarna unipolarna funkcja aktywacji
+//        if (sumSignal>=0)
+//            return 1;
+//
+//        return 0;
 
-        return 0;
+//        // Sigmoidalna funkcja aktywacji
+//
+        double beta = 1.0;
+        return (1.0/(1.0 + Math.pow(Math.E,-(beta*sumSignal))));
     }
 
     @Override
@@ -145,7 +157,7 @@ public class Perceptron extends Neuron{
             System.out.println(tRes);
 
             saveTime(i, tRes);
-            saveEpochNumbers(i, j);
+            saveNumberOfEpochs(i, j);
 
             // Zostawiam ostatnią próbę aby testować już na zmodyfikowanych wagach
             if (i != attempts-1){
@@ -156,7 +168,7 @@ public class Perceptron extends Neuron{
         }
 
         saveAverageTime(attempts);
-        saveAverageEpochs(attempts);
+        saveAverageNumberOfEpochs(attempts);
     }
 
     private double updateWeight(double weight, double n, double y, double x){
