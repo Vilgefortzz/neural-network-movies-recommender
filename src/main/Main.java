@@ -1,6 +1,7 @@
 package main;
 
 import main.networks.NeuralNetwork;
+import static main.io.FilesSave.*;
 
 public class Main {
 
@@ -12,7 +13,7 @@ public class Main {
         double[][] dataOR = {{0, 0, 0}, {0, 1, 1}, {1, 0, 1}, {1, 1, 1}};
         double[][] dataNOT = {{0, 1}, {1, 0}};
 
-        Controller controller = new Controller();
+//        Controller controller = new Controller();
 
 //        controller.createMcCullochPittsNeuron(dataAND);
 //        controller.learningMcCullohPittsNeuron(2,1);
@@ -115,9 +116,26 @@ public class Main {
 
         double acceptableError = 0.01; // akceptowalny błąd obliczeń
 
+        // błędy mse i mape
+
+        double tmpMse;
+        double tmpMape;
+
+        double mse;
+        double mape;
+
         // t - ilość iteracji ( można ustalić maksymalną ilość iteracji po której sieć albo się nauczy albo nie )
 
+        // Start stoper - time learning for n attempt
+        long tStart = System.nanoTime();
+
         while (!isDone1 && t<500) {
+
+            tmpMse = 0.0;
+            tmpMape = 0.0;
+
+            mse = 0.0;
+            mape = 0.0;
 
             t++;
             isDone1 = true;
@@ -137,15 +155,39 @@ public class Main {
                     if ((Math.abs(expectedData[j][0] - net.computeOutput(inputData[j])[0]) > acceptableError)) {
                         isDone2 = false;
                     }
+
+                    // Wyliczenie mse (błędu średniokwadratowego)
+
+                    tmpMse += Math.pow(net.getLayerOutput().getNeurons().get(0).getError(),2.);
+
+                    // Wyliczenie mape (błędu procentowego)
+
+                    tmpMape += Math.abs(net.getLayerOutput().getNeurons().get(0).getError());
                 }
             }
 
             if ((Math.abs(expectedData[0][0] - net.computeOutput(inputData[0])[0]) > acceptableError)||(Math.abs(expectedData[1][0] - net.computeOutput(inputData[1])[0]) > acceptableError)||(Math.abs(expectedData[2][0] - net.computeOutput(inputData[2])[0]) > acceptableError)||(Math.abs(expectedData[3][0] - net.computeOutput(inputData[3])[0]) > acceptableError)) {
                 isDone1 = false;
             }
+
+            mse = tmpMse/(double)inputData.length;
+            mape = tmpMape*100./(double)inputData.length;
+
+            saveMse("wyniki_2",1,t,mse);
+            saveMape("wyniki_2",1,t,mape);
+
+            System.out.println("MSE: " + mse);
+            System.out.println("MAPE: " + mape + "%");
         }
 
+        long tEnd = System.nanoTime();
+        long tRes = tEnd - tStart; // time in nanoseconds
+        System.out.println("Time learning: " + tRes);
+
+        saveTime("wyniki_2", 1, tRes);
+        saveNumberOfEpochs("wyniki_2", 1, t);
+
         System.out.println("LAST ITERATION: " + t);
-        System.out.println("XOR: " + "x1: " + 0 + " x2: " + 0 + " -> " + net.computeOutput(inputData[0])[0] + "x1: " + 0 + " x2: " + 1 + " -> " + net.computeOutput(inputData[1])[0] + "x1: " + 1 + " x2: " + 0 + " -> " + net.computeOutput(inputData[2])[0] + "x1: " + 1 + " x2: " + 1 + " -> " + net.computeOutput(inputData[3])[0]);
+        System.out.println("XOR: " + "x1: " + 0 + " x2: " + 0 + " -> " + net.computeOutput(inputData[0])[0] + " x1: " + 0 + " x2: " + 1 + " -> " + net.computeOutput(inputData[1])[0] + " x1: " + 1 + " x2: " + 0 + " -> " + net.computeOutput(inputData[2])[0] + " x1: " + 1 + " x2: " + 1 + " -> " + net.computeOutput(inputData[3])[0]);
     }
 }

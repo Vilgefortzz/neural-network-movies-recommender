@@ -96,8 +96,8 @@ public class McCullochPittsNeuron extends Neuron{
                 mse = tmpMse/(double)inputData.length;
                 mape = tmpMape*100./(double)inputData.length;
 
-                saveMse(i,j,mse);
-                saveMape(i,j,mape);
+                saveMse("wyniki_1",i,j,mse);
+                saveMape("wyniki_1",i,j,mape);
 
                 System.out.println("Iteracja "+(j-1)+" liczba bledow: "+countErrors);
                 System.out.println("MSE: " + mse);
@@ -109,8 +109,8 @@ public class McCullochPittsNeuron extends Neuron{
             long tRes = tEnd - tStart; // time in nanoseconds
             System.out.println(tRes);
 
-            saveTime(i, tRes);
-            saveNumberOfEpochs(i, j);
+            saveTime("wyniki_1", i, tRes);
+            saveNumberOfEpochs("wyniki_1", i, j);
 
             // Zostawiam ostatnią próbę aby testować już na zmodyfikowanych wagach
             if (i != attempts-1){
@@ -120,8 +120,8 @@ public class McCullochPittsNeuron extends Neuron{
             }
         }
 
-        saveAverageTime(attempts);
-        saveAverageNumberOfEpochs(attempts);
+        saveAverageTime("wyniki_1",attempts);
+        saveAverageNumberOfEpochs("wyniki_1",attempts);
     }
 
     private double updateWeight(double weight, double learningRate, double error, double x){

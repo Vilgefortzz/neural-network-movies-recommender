@@ -84,4 +84,8 @@ public class NeuralNetwork {
             layerHidden.setWeights();
         }
     }
+
+    public Layer getLayerOutput() {
+        return layerOutput;
+    }
 }

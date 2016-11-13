@@ -1,0 +1,2 @@
+Attempt number: 1
+Number of epochs/iterations: 27

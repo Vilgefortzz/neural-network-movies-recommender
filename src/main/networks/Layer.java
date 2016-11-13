@@ -54,6 +54,10 @@ public class Layer {
         }
     }
 
+    public ArrayList<Neuron> getNeurons() {
+        return neurons;
+    }
+
     public double[] returnOutputs() {
 
         int size = neurons.size();
