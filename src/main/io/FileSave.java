@@ -5,7 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class FilesSave {
+public class FileSave {
 
     private static long averageTime = 0;
     private static double averageEpochs = 0;
@@ -47,7 +47,7 @@ public class FilesSave {
                     BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
                     PrintWriter out = new PrintWriter(bufferedWriter)
             ) {
-                String addToFile = "Attempt number: " + attempt + "\n" + "Time in nanoseconds: " + time;
+                String addToFile = "Attempt number: " + attempt + "\n" + "Time: " + time + " miliseconds";
                 averageTime+=time;
                 out.println(addToFile);
 
@@ -94,7 +94,7 @@ public class FilesSave {
                 BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
                 PrintWriter out = new PrintWriter(bufferedWriter)
         ) {
-            String addToFile = "Average time learning after all attempts: " + averageTime/attempts;
+            String addToFile = "Average time learning after all attempts: " + averageTime/attempts + " miliseconds";
             out.println(addToFile);
 
         } catch (IOException ex) {

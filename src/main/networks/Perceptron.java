@@ -3,8 +3,9 @@ package main.networks;
 import main.neurons.Neuron;
 
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
-import static main.io.FilesSave.*;
+import static main.io.FileSave.*;
 
 public class Perceptron extends Neuron {
 
@@ -20,15 +21,15 @@ public class Perceptron extends Neuron {
     protected double activationFunction(double sumSignal) {
 
         // Binarna unipolarna funkcja aktywacji
-//        if (sumSignal>=0)
-//            return 1;
-//
-//        return 0;
+        if (sumSignal>=0)
+            return 1;
+
+        return 0;
 
 //        // Sigmoidalna funkcja aktywacji
 //
-        double beta = 1.0;
-        return (1.0/(1.0 + Math.pow(Math.E,-(beta*sumSignal))));
+//        double beta = 1.0;
+//        return (1.0/(1.0 + Math.pow(Math.E,-(beta*sumSignal))));
     }
 
     @Override
@@ -90,8 +91,8 @@ public class Perceptron extends Neuron {
 
             System.out.println("|_Proba: "+ i + "_|");
 
-            // Start stoper - time learning for n attempt
-            long tStart = System.nanoTime();
+            // Start stoper - time learning for one attempt
+            long start_time = System.currentTimeMillis();
 
             do {
 
@@ -146,24 +147,23 @@ public class Perceptron extends Neuron {
                 saveMse("wyniki_1",i,j,mse);
                 saveMape("wyniki_1",i,j,mape);
 
-                System.out.println("Iteracja "+(j-1)+" liczba bledow: "+countErrors);
+                System.out.println("Iteracja "+ (j-1) +" liczba bledow: "+countErrors);
                 System.out.println("MSE: " + mse);
                 System.out.println("MAPE: " + mape + "%");
 
             } while(!isDone);
 
-            long tEnd = System.nanoTime();
-            long tRes = tEnd - tStart; // time in nanoseconds
-            System.out.println(tRes);
+            long end_time = System.currentTimeMillis();
+            long difference = end_time - start_time; // time in miliseconds
 
-            saveTime("wyniki_1", i, tRes);
+            System.out.println(difference + " miliseconds");
+
+            saveTime("wyniki_1", i, difference);
             saveNumberOfEpochs("wyniki_1", i, j);
 
             // Zostawiam ostatnią próbę aby testować już na zmodyfikowanych wagach
             if (i != attempts-1){
-                this.setW1(((double)new Random().nextInt(11))/10.0);
-                this.setW2(((double)new Random().nextInt(11))/10.0);
-                this.setBias(0);
+                clearNeuron();
             }
         }
 
@@ -174,6 +174,7 @@ public class Perceptron extends Neuron {
     private double updateWeight(double weight, double n, double y, double x){
         return (weight+(n*(y)*x));
 }
+
     private double updateBias(double b, double n, double y) {return b+(n*(y));}
 
     public double testTwoParameters(double x1, double x2){

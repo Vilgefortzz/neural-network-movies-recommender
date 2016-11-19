@@ -5,11 +5,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-public class FileReader {
+public class DataLoader {
 
     private ArrayList<String> lines;
 
-    public FileReader(String path) {
+    public DataLoader(String path) {
 
         try {
             readFile(path);

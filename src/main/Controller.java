@@ -1,6 +1,6 @@
 package main;
 
-import main.io.FileReader;
+import main.io.DataLoader;
 import main.neurons.McCullochPittsNeuron;
 import main.networks.Perceptron;
 
@@ -44,16 +44,16 @@ public class Controller {
 
     public void readInputData() {
 
-        FileReader file = new FileReader("/data_set/movies.dat");
+        DataLoader file = new DataLoader("/data_set/movies.dat");
         this.movies = file.getLines();
 
-        file = new FileReader("/data_set/learning_set/movies.dat");
+        file = new DataLoader("/data_set/learning_set/movies.dat");
         this.moviesLearn = file.getLines();
 
-        file = new FileReader("/data_set/validation_set/movies.dat");
+        file = new DataLoader("/data_set/validation_set/movies.dat");
         this.moviesValidate = file.getLines();
 
-        file = new FileReader("/data_set/learning_set/users.dat");
+        file = new DataLoader("/data_set/learning_set/users.dat");
         this.users = file.getLines();
 
         // Finally moviesLearn + users and their rates = learning set
@@ -131,7 +131,6 @@ public class Controller {
     }
 
     public void createPerceptron(double[][] inputData){
-
         perceptron = new Perceptron(inputData);
     }
 

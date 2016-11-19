@@ -132,6 +132,20 @@ public abstract class Neuron {
         this.outSignal = activationFunction(sumSignal);
     }
 
+    // ustalanie randomowych wag dla neuronu
+
+    public void clearNeuron(){
+
+        Random rand = new Random();
+
+        w1=((double)rand.nextInt(11))/10.0;
+        w2=((double)rand.nextInt(11))/10.0;
+
+        this.bias = 0.0;
+        this.error = 0.0;
+        this.connections = new ArrayList<>();
+    }
+
     // funkcja aktywacji - różna dla różnych neuronów
 
     protected abstract double activationFunction(double sumSignal);
