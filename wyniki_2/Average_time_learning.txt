@@ -1,0 +1,1 @@
+Average time learning after all attempts: 1337 miliseconds

@@ -19,4 +19,8 @@ public class Connection {
         return inputWeight * inputNeuron.getOutSignal();
     }
 
+    public void clearWeights(){
+        this.inputWeight = new Random().nextGaussian();
+    }
+
 }

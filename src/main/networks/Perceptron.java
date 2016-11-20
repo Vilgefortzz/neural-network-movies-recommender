@@ -18,15 +18,15 @@ public class Perceptron extends Neuron {
     protected double activationFunction(double sumSignal) {
 
         // Binarna unipolarna funkcja aktywacji
-        if (sumSignal>=0)
-            return 1;
-
-        return 0;
+//        if (sumSignal>=0)
+//            return 1;
+//
+//        return 0;
 
 //        // Sigmoidalna funkcja aktywacji
 //
-//        double beta = 1.0;
-//        return (1.0/(1.0 + Math.pow(Math.E,-(beta*sumSignal))));
+        double beta = 1.0;
+        return (1.0/(1.0 + Math.pow(Math.E,-(beta*sumSignal))));
     }
 
     @Override
@@ -123,7 +123,10 @@ public class Perceptron extends Neuron {
 
                     // Wyliczenie mape (błędu procentowego)
 
-                    tmpMape += Math.abs(error);
+                    if(expectedOutSignal != 0.)
+                        tmpMape += Math.abs(error/expectedOutSignal);
+                    else
+                        n--;
 
                     if(error!=0){
                         isDone=false;
@@ -139,7 +142,7 @@ public class Perceptron extends Neuron {
                 }
 
                 mse = tmpMse/(double)inputData.length;
-                mape = tmpMape*100./(double)inputData.length;
+                mape = tmpMape*100./(double)(n!=0?n:1);
 
                 saveMse("wyniki_1",i,j,mse);
                 saveMape("wyniki_1",i,j,mape);

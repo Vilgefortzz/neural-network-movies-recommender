@@ -95,6 +95,10 @@ public abstract class Neuron {
         this.bias = bias;
     }
 
+    public ArrayList<Connection> getConnections() {
+        return connections;
+    }
+
     // Sumator sygnałów wejściowych
 
     public void computeSumSignalsTwoParameters(double w1, double w2, double x1, double x2, double bias) {
@@ -143,7 +147,6 @@ public abstract class Neuron {
 
         this.bias = 0.0;
         this.error = 0.0;
-        this.connections = new ArrayList<>();
     }
 
     // funkcja aktywacji - różna dla różnych neuronów

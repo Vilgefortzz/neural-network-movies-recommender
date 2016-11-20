@@ -1,2 +1,100 @@
+Attempt number: 0
+Number of epochs/iterations: 88
 Attempt number: 1
-Number of epochs/iterations: 27
+Number of epochs/iterations: 219
+Attempt number: 2
+Number of epochs/iterations: 105
+Attempt number: 3
+Number of epochs/iterations: 71
+Attempt number: 4
+Number of epochs/iterations: 222
+Attempt number: 5
+Number of epochs/iterations: 247
+Attempt number: 6
+Number of epochs/iterations: 74
+Attempt number: 7
+Number of epochs/iterations: 87
+Attempt number: 8
+Number of epochs/iterations: 190
+Attempt number: 9
+Number of epochs/iterations: 219
+Attempt number: 10
+Number of epochs/iterations: 193
+Attempt number: 11
+Number of epochs/iterations: 161
+Attempt number: 12
+Number of epochs/iterations: 232
+Attempt number: 13
+Number of epochs/iterations: 210
+Attempt number: 14
+Number of epochs/iterations: 86
+Attempt number: 15
+Number of epochs/iterations: 133
+Attempt number: 16
+Number of epochs/iterations: 128
+Attempt number: 17
+Number of epochs/iterations: 117
+Attempt number: 18
+Number of epochs/iterations: 146
+Attempt number: 19
+Number of epochs/iterations: 203
+Attempt number: 20
+Number of epochs/iterations: 181
+Attempt number: 21
+Number of epochs/iterations: 113
+Attempt number: 22
+Number of epochs/iterations: 214
+Attempt number: 23
+Number of epochs/iterations: 154
+Attempt number: 24
+Number of epochs/iterations: 209
+Attempt number: 25
+Number of epochs/iterations: 176
+Attempt number: 26
+Number of epochs/iterations: 111
+Attempt number: 27
+Number of epochs/iterations: 238
+Attempt number: 28
+Number of epochs/iterations: 101
+Attempt number: 29
+Number of epochs/iterations: 137
+Attempt number: 30
+Number of epochs/iterations: 102
+Attempt number: 31
+Number of epochs/iterations: 244
+Attempt number: 32
+Number of epochs/iterations: 100
+Attempt number: 33
+Number of epochs/iterations: 102
+Attempt number: 34
+Number of epochs/iterations: 63
+Attempt number: 35
+Number of epochs/iterations: 277
+Attempt number: 36
+Number of epochs/iterations: 171
+Attempt number: 37
+Number of epochs/iterations: 153
+Attempt number: 38
+Number of epochs/iterations: 70
+Attempt number: 39
+Number of epochs/iterations: 192
+Attempt number: 40
+Number of epochs/iterations: 165
+Attempt number: 41
+Number of epochs/iterations: 203
+Attempt number: 42
+Number of epochs/iterations: 174
+Attempt number: 43
+Number of epochs/iterations: 158
+Attempt number: 44
+Number of epochs/iterations: 133
+Attempt number: 45
+Number of epochs/iterations: 216
+Attempt number: 46
+Number of epochs/iterations: 104
+Attempt number: 47
+Number of epochs/iterations: 58
+Attempt number: 48
+Number of epochs/iterations: 155
+Attempt number: 49
+Number of epochs/iterations: 174

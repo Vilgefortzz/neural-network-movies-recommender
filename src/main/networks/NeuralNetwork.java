@@ -1,5 +1,10 @@
 package main.networks;
 
+import main.neurons.Connection;
+import main.neurons.Neuron;
+
+import static main.io.DataSave.*;
+
 public class NeuralNetwork {
 
 //    Warstwy wchodzące w skład sieci neuronowej - wielowarstwowa sieć neuronowa
@@ -47,7 +52,7 @@ public class NeuralNetwork {
         return layerOutput.returnOutputs();
     }
 
-    public void learning(double[] expectedOutput, double[] input){
+    public void learningRuleWithBackPropagation(double[] expectedOutput, double[] input){
 
         layerOutput.clearErrors();
 
@@ -85,7 +90,123 @@ public class NeuralNetwork {
         }
     }
 
+    public void applyLearningRule(double[][] inputData, double[][] expectedData, int attempts){
+
+        for (int i=0;i<attempts;i++){
+
+            int t = 0;
+            boolean isDone1 = false;
+
+            double acceptableError = 0.01; // akceptowalny błąd obliczeń
+
+            // błędy mse i mape
+
+            double tmpMse;
+            double tmpMape;
+
+            double mse;
+            double mape;
+
+            System.out.println("|_Proba: "+ i + "_|");
+
+            // t - ilość iteracji ( można ustalić maksymalną ilość iteracji po której sieć albo się nauczy albo nie )
+
+            // Start stoper - time learning for one attempt
+            long start_time = System.currentTimeMillis();
+
+            while (!isDone1 && t<500) {
+
+                tmpMse = 0.0;
+                tmpMape = 0.0;
+                int n = inputData.length;
+
+                t++;
+                isDone1 = true;
+
+                for (int j = 0; j < expectedData.length; j++) {
+
+                    learningRuleWithBackPropagation(expectedData[j], inputData[j]);
+
+                    // Wyliczenie mse (błędu średniokwadratowego)
+
+                    tmpMse += Math.pow(getLayerOutput().neurons.get(0).getError(),2.);
+
+                    // Wyliczenie mape (błędu procentowego)
+
+                    if(expectedData[j][0] != 0.)
+                        tmpMape += Math.abs(getLayerOutput().neurons.get(0).getError()/expectedData[j][0]);
+                    else
+                        n--;
+                }
+
+                if ((Math.abs(expectedData[0][0] - computeOutput(inputData[0])[0]) > acceptableError)||(Math.abs(expectedData[1][0] - computeOutput(inputData[1])[0]) > acceptableError)||(Math.abs(expectedData[2][0] - computeOutput(inputData[2])[0]) > acceptableError)||(Math.abs(expectedData[3][0] - computeOutput(inputData[3])[0]) > acceptableError)) {
+                    isDone1 = false;
+                }
+
+                mse = tmpMse/(double)inputData.length;
+                mape = tmpMape*100./(double)(n!=0?n:1);
+
+                saveMse("wyniki_2",i,t,mse);
+                saveMape("wyniki_2",i,t,mape);
+
+                System.out.println("MSE: " + mse);
+                System.out.println("MAPE: " + mape + "%");
+            }
+
+            long end_time = System.currentTimeMillis();
+            long difference = end_time - start_time; // time in miliseconds
+
+            System.out.println(difference + " miliseconds");
+
+            saveTime("wyniki_2", i, difference);
+            saveNumberOfEpochs("wyniki_2", i, t);
+
+            // Zostawiam ostatnią próbę aby testować już na zmodyfikowanych wagach
+            if (i != attempts-1){
+                clearNeuronsInLayers();
+                System.out.println("LAST ITERATION: " + t);
+            }
+        }
+
+        saveAverageTime("wyniki_2",attempts);
+        saveAverageNumberOfEpochs("wyniki_2",attempts);
+    }
+
+    public void testValidation(double[][] inputData){
+
+        System.out.println("XOR: " + "x1: " + 0 + " x2: " + 0 + " -> " + computeOutput(inputData[0])[0]
+                + " x1: " + 0 + " x2: " + 1 + " -> " + computeOutput(inputData[1])[0]
+                + " x1: " + 1 + " x2: " + 0 + " -> " + computeOutput(inputData[2])[0]
+                + " x1: " + 1 + " x2: " + 1 + " -> " + computeOutput(inputData[3])[0]);
+    }
+
     public Layer getLayerOutput() {
         return layerOutput;
+    }
+
+    private void clearNeuronsInLayers(){
+
+        for (Neuron neuron: layerInput.neurons){
+            for (Connection connection: neuron.getConnections()){
+                connection.clearWeights();
+            }
+            neuron.clearNeuron();
+        }
+
+        for (int i=0;i<layersHidden.length;i++){
+            for (Neuron neuron: layersHidden[i].neurons){
+                for (Connection connection: neuron.getConnections()){
+                    connection.clearWeights();
+                }
+                neuron.clearNeuron();
+            }
+        }
+
+        for (Neuron neuron: layerOutput.neurons){
+            for (Connection connection: neuron.getConnections()){
+                connection.clearWeights();
+            }
+            neuron.clearNeuron();
+        }
     }
 }
