@@ -1,7 +1,7 @@
 package main;
 
 import main.networks.NeuralNetwork;
-import static main.io.FileSave.*;
+import static main.io.DataSave.*;
 
 public class Main {
 
@@ -56,14 +56,14 @@ public class Main {
         controller.readInputData();
 
         // Wygenerowanie zestawu uczącego z pliku
-        controller.generateLearningData(100,1,2); // ilość filmów, ilość użytkowików, ilość parametrów
+        controller.generateLearningData(175,1,2); // ilość filmów, ilość użytkowników, ilość parametrów
 
         // Uczenie perceptronu
         controller.createPerceptron();
         controller.learningPerceptron(2,50); // ilość parametrów, ilość prób - powtarzanie uczenia
 
         // Wygenerowanie zestawu danych walidujących z pliku
-        controller.generateValidationData(30,1,2);
+        controller.generateValidationData(75,1,2);
 
         // Walidacja/Testowanie sieci przy użyciu zestawu danych walidujących z pliku
 

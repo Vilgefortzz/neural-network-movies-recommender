@@ -5,7 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class FileSave {
+public class DataSave {
 
     private static long averageTime = 0;
     private static double averageEpochs = 0;

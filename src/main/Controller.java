@@ -8,10 +8,6 @@ import java.util.ArrayList;
 
 public class Controller {
 
-    // All files - too much data
-    private ArrayList<String> movies;
-    private ArrayList<String> ratings;
-
     // Files which have cut ( to learn and validate )
     private ArrayList<String> moviesLearn;
     private ArrayList<String> moviesValidate;
@@ -30,9 +26,6 @@ public class Controller {
 
     public Controller() {
 
-        this.movies = new ArrayList<>();
-        this.ratings = new ArrayList<>();
-
         this.moviesLearn = new ArrayList<>();
         this.moviesValidate = new ArrayList<>();
         this.users = new ArrayList<>();
@@ -44,8 +37,7 @@ public class Controller {
 
     public void readInputData() {
 
-        DataLoader file = new DataLoader("/data_set/movies.dat");
-        this.movies = file.getLines();
+        DataLoader file;
 
         file = new DataLoader("/data_set/learning_set/movies.dat");
         this.moviesLearn = file.getLines();
@@ -67,14 +59,14 @@ public class Controller {
 
         for (int i=0;i<numberOfMovies;i++){
 
-            String[] info1 = moviesLearn.get(i).split("::");
+            String[] info1 = moviesLearn.get(i).split(" +");
             moviesRatings[i] = info1[3];
         }
 
         for (int i=0;i<numberOfUsers;i++){
 
-            String[] info2 = users.get(i).split("::");
-            usersLikes[i] = info2[2];
+            String[] info2 = users.get(i).split(" +");
+            usersLikes[i] = info2[3];
         }
 
         int k=0;
@@ -103,14 +95,14 @@ public class Controller {
 
         for (int i = 0; i < numberOfMovies; i++) {
 
-            String[] info1 = moviesValidate.get(i).split("::");
+            String[] info1 = moviesValidate.get(i).split(" +");
             moviesRatings[i] = info1[3];
         }
 
         for (int i = 0; i < numberOfUsers; i++) {
 
-            String[] info2 = users.get(i).split("::");
-            usersLikes[i] = info2[2];
+            String[] info2 = users.get(i).split(" +");
+            usersLikes[i] = info2[3];
         }
 
         int k = 0;

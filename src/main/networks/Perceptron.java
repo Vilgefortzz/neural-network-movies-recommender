@@ -2,10 +2,7 @@ package main.networks;
 
 import main.neurons.Neuron;
 
-import java.util.Random;
-import java.util.concurrent.TimeUnit;
-
-import static main.io.FileSave.*;
+import static main.io.DataSave.*;
 
 public class Perceptron extends Neuron {
 

@@ -1,30 +1,75 @@
-100::City Hall (1996)::Drama|Thriller::7.4
-101::Bottle Rocket (1996)::Comedy::6.5
-102::Mr. Wrong (1996)::Comedy::6.8
-103::Unforgettable (1996)::Thriller::7.2
-104::Happy Gilmore (1996)::Comedy::7.5
-105::Bridges of Madison County, The (1995)::Drama|Romance::6.8
-106::Nobody Loves Me (Keiner liebt mich) (1994)::Comedy|Drama::7.1
-107::Muppet Treasure Island (1996)::Adventure|Children's|Comedy|Musical::6.8
-108::Catwalk (1995)::Documentary::7.2
-109::Headless Body in Topless Bar (1995)::Comedy::6.7
-110::Braveheart (1995)::Action|Drama|War::8.4
-111::Taxi Driver (1976)::Drama|Thriller::8.1
-112::Rumble in the Bronx (1995)::Action|Adventure|Crime::6.7
-113::Before and After (1996)::Drama|Mystery::6.8
-114::Margaret's Museum (1995)::Drama::7.1
-115::Happiness Is in the Field (1995)::Comedy::6.9
-116::Anne Frank Remembered (1995)::Documentary::5.9
-117::Young Poisoner's Handbook, The (1995)::Crime::7.1
-118::If Lucy Fell (1996)::Comedy|Romance::6.7
-119::Steal Big, Steal Little (1995)::Comedy::6.5
-120::Race the Sun (1996)::Drama::6.3
-121::Boys of St. Vincent, The (1993)::Drama::7.1
-122::Boomerang (1992)::Comedy|Romance::7.5
-123::Chungking Express (1994)::Drama|Mystery|Romance::6.8
-124::Star Maker, The (Uomo delle stelle, L') (1995)::Drama::5.7
-125::Flirting With Disaster (1996)::Comedy::6.7
-126::NeverEnding Story III, The (1994)::Adventure|Children's|Fantasy::8.2
-127::Silence of the Palace, The (Saimt el Qusur) (1994)::Drama::6.8
-128::Jupiter's Wife (1994)::Documentary::6.6
-129::Pie in the Sky (1995)::Comedy|Romance::5.9
+      0000001321  596229   8.1  Gone Girl (2014)
+      0000001222  384514   8.1  There Will Be Blood (2007)
+      0000001222   66989   8.1  It Happened One Night (1934)
+      0000001222  279474   8.1  Life of Brian (1979)
+      0000000124   33090   8.1  Drishyam (2015)
+      0000001321  323856   8.1  Rush (2013/I)
+      0000001321  271042   8.1  Hotel Rwanda (2004)
+      0000001321  298694   8.1  Platoon (1986)
+      0000001321  813030   8.1  Shutter Island (2010)
+      0000001222  106683   8.1  Network (1976)
+      0000001222   27174   8.1  Le notti di Cabiria (1957)
+      0000001222   36473   8.1  Le salaire de la peur (1953)
+      0000001321  228034   8.1  Spotlight (2015/I)
+      0000001321  279719   8.1  Stand by Me (1986)
+      0000001321  113527   8.1  In the Name of the Father (1993)
+      0000001321  156238   8.1  Butch Cassidy and the Sundance Kid (1969)
+      0000001221  116306   8.1  The Maltese Falcon (1941)
+      0000001222  586674   8.1  Mad Max: Fury Road (2015)
+      0000001222   72384   8.1  Les quatre cents coups (1959)
+      0000001321   98220   8.1  Relatos salvajes (2014)
+      0000001321  457270   8.1  12 Years a Slave (2013)
+      0000001222  166071   8.1  Ben-Hur (1959)
+      0000001222   64205   8.1  Persona (1966)
+      0000001321  497977   8.1  The Grand Budapest Hotel (2014)
+      0000001321  494952   8.1  Million Dollar Baby (2004)
+      0000001321  177675   8.1  Amores perros (2000)
+      0000001222  301639   8.1  The Princess Bride (1987)
+      0000001321  633409   8.1  Jurassic Park (1993)
+      0000001222  164008   8.1  Hachi: A Dog's Tale (2009)
+      0000000115   32901   8.1  The Message (1976)
+      0000001222   99815   8.1  Kaze no tani no Naushika (1984)
+      0000001321   70779   8.0  Salinui chueok (2003)
+      0000001123   70994   8.0  Stalker (1979)
+      0000001222   64990   8.0  The Grapes of Wrath (1940)
+      0000001222   74915   8.0  Touch of Evil (1958)
+      0000000232   31149   8.0  Udaan (2010)
+      0000001321  688724   8.0  The Truman Show (1998)
+      0000001222  189966   8.0  Before Sunrise (1995)
+      0000001222  198768   8.0  Annie Hall (1977)
+      0000001321  176133   8.0  Gandhi (1982)
+      0000001321  229299   8.0  Zootopia (2016)
+      0000001321  506510   8.0  The Bourne Ultimatum (2007)
+      0000001321  387127   8.0  Rocky (1976)
+      0000001321   43479   8.0  Les diaboliques (1955)
+      0000001222  561369   8.0  Harry Potter and the Deathly Hallows: Part 2 (2011)
+      0000001222  595806   8.0  Donnie Darko (2001)
+      0000000124   49703   8.0  Chak De! India (2007)
+      0000001321  604893   8.0  Monsters, Inc. (2001)
+      0000001213   80740   8.0  8˝ (1963)
+      0000001212  298860   8.0  The Wizard of Oz (1939)
+      0000001321  616329   8.0  The Terminator (1984)
+      0000001321  402187   8.0  Prisoners (2013)
+      0000001321  449832   8.0  Groundhog Day (1993)
+      0000001321  473757   8.0  Twelve Monkeys (1995)
+      0000001211  424102   8.0  Jaws (1975)
+      0000001321  549782   8.0  Catch Me If You Can (2002)
+      0000001321  106955   8.0  La haine (1995)
+      0000001222  104706   8.0  Barry Lyndon (1975)
+      0000000123   43073   8.0  Queen (2013)
+      0000001222   41376   8.0  The Best Years of Our Lives (1946)
+      0000001321   94156   8.0  Mou gaan dou (2002)
+      0000001321   99240   8.0  Strangers on a Train (1951)
+      0000001222   27715   8.0  Kind Hearts and Coronets (1949)
+      0000001221  668948   8.0  Sin City (2005)
+      0000001222   38740   8.0  La battaglia di Algeri (1966)
+      0000001321  187148   8.0  Dog Day Afternoon (1975)
+      0000000222   49544   8.0  Dil Chahta Hai (2001)
+      0000001321  829782   8.0  Pirates of the Caribbean: The Curse of the Black Pearl (2003)
+      0000001321  327610   8.0  The Help (2011)
+      0000001321  497426   8.0  The Imitation Game (2014)
+      0000000233  1250830   8.7  The Matrix (1999)
+      0000000123  235270   8.6  Shichinin no samurai (1954)
+      0000000223  934664   8.6  Star Wars (1977)
+      0000000232  546872   8.6  Cidade de Deus (2002)
+      0000001232  1054826   8.6  Se7en (1995)
