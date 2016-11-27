@@ -42,7 +42,7 @@ public class McCullochPittsNeuron extends Neuron{
 
             System.out.println("|_Proba: "+ i + "_|");
 
-            // Start stoper - time learningRuleWithBackPropagation for n attempt
+            // Start stoper - time backPropagationLearning for n attempt
             long tStart = System.nanoTime();
 
             do {

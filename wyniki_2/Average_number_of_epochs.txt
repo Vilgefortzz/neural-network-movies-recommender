@@ -1,1 +1,1 @@
-Average number of epochs after all attempts: 155.58
+Average number of epochs after all attempts: 154.86

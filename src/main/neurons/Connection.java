@@ -16,7 +16,7 @@ public class Connection {
 
     public double getWeightedSignal() {
 
-        return inputWeight * inputNeuron.getOutSignal();
+        return inputWeight * inputNeuron.getOutSignal(); // sygnał wejściowy dla neuronu
     }
 
     public void clearWeights(){

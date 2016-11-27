@@ -52,45 +52,23 @@ public class NeuralNetwork {
         return layerOutput.returnOutputs();
     }
 
-    public void learningRuleWithBackPropagation(double[] expectedOutput, double[] input){
+    public void backPropagationLearning(double[] expectedOutput, double[] input){
 
-        layerOutput.clearErrors();
-
-        for (Layer layerHidden : layersHidden) {
-
-            layerHidden.clearErrors();
-        }
-
-        // Obliczanie sygnałów na warstwach + komunikacja
-        double[] outSignals = computeOutput(input);
-
-        for (double outSignal : outSignals) {
-
-            System.out.println("Out signal from output Layer: " + outSignal);
-        }
-
-        // Obliczanie błędu regułą delta - różnicy między oczekiwaną wartością a tym co dostajemy
-        layerOutput.computeErrors(expectedOutput);
-
-        // Wsteczna propagacja błędów warstwy ukrytej wykrytych w warstwie odbierającej sygnały - outputu
-        layerOutput.changeErrorsBackwards();
-
-        // Wsteczna propagacja błędów warstw ukrytych o jeden wcześniej aż do warstwy inputu
-        for (int i = (layersHidden.length-1); i>0; i--){
-
-            layersHidden[i].changeErrorsBackwards();
-        }
-
-        // Modyfikacja wag - alogrytm wstecznej propagacji z regułą delta
-        layerOutput.setWeights();
-
-        for (Layer layerHidden : layersHidden) {
-
-            layerHidden.setWeights();
-        }
+        updateSignalErrors(expectedOutput, input);
+        updateWeights();
     }
 
-    public void applyLearningRule(double[][] inputData, double[][] expectedData, int attempts){
+    public void hebbLearningWithoutTeacher() {
+
+        updateWeightsHebbsRuleNoTeacher();
+    }
+
+    public void hebbLearningWithTeacher(double[] input) {
+
+        updateWeightsHebbsRuleWithTeacher();
+    }
+
+    public void learning(double[][] inputData, double[][] expectedData, int attempts){
 
         for (int i=0;i<attempts;i++){
 
@@ -125,7 +103,7 @@ public class NeuralNetwork {
 
                 for (int j = 0; j < expectedData.length; j++) {
 
-                    learningRuleWithBackPropagation(expectedData[j], inputData[j]);
+                    backPropagationLearning(expectedData[j], inputData[j]);
 
                     // Wyliczenie mse (błędu średniokwadratowego)
 
@@ -170,6 +148,107 @@ public class NeuralNetwork {
 
         saveAverageTime("wyniki_2",attempts);
         saveAverageNumberOfEpochs("wyniki_2",attempts);
+    }
+
+    public void learningHebb(double[][] inputData, int attempts){
+
+        for (int i=0;i<attempts;i++){
+
+            int t = 0;
+
+            // błędy mse i mape
+
+            System.out.println("|_Proba: "+ i + "_|");
+
+            // t - ilość iteracji ( można ustalić maksymalną ilość iteracji po której sieć albo się nauczy albo nie )
+
+            // Start stoper - time learning for one attempt
+            long start_time = System.currentTimeMillis();
+
+            while (t<1000) {
+
+                t++;
+
+                for (int j = 0; j < inputData.length; j++) {
+
+                    hebbLearningWithoutTeacher();
+                }
+            }
+
+            long end_time = System.currentTimeMillis();
+            long difference = end_time - start_time; // time in miliseconds
+
+            System.out.println(difference + " miliseconds");
+
+            // Zostawiam ostatnią próbę aby testować już na zmodyfikowanych wagach
+            if (i != attempts-1){
+                clearNeuronsInLayers();
+                System.out.println("LAST ITERATION: " + t);
+            }
+        }
+    }
+
+    private void updateSignalErrors(double[] expectedOutput, double[] input) {
+
+        layerOutput.clearErrors();
+
+        for (Layer layerHidden : layersHidden) {
+
+            layerHidden.clearErrors();
+        }
+
+        // Obliczanie sygnałów na warstwach + komunikacja
+        double[] outSignals = computeOutput(input);
+
+        for (double outSignal : outSignals) {
+
+            System.out.println("Out signal from output Layer: " + outSignal);
+        }
+
+        // Obliczanie błędu regułą delta - różnicy między oczekiwaną wartością a tym co dostajemy
+        layerOutput.computeErrors(expectedOutput);
+
+        // Wsteczna propagacja błędów warstwy ukrytej wykrytych w warstwie odbierającej sygnały - outputu
+        layerOutput.changeErrorsBackwards();
+
+        // Wsteczna propagacja błędów warstw ukrytych o jeden wcześniej aż do warstwy inputu
+        for (int i = (layersHidden.length-1); i>0; i--){
+
+            layersHidden[i].changeErrorsBackwards();
+        }
+    }
+
+    private void updateWeights() {
+
+        // Modyfikacja wag - alogrytm wstecznej propagacji z regułą delta
+        layerOutput.setWeights();
+
+        for (Layer layerHidden : layersHidden) {
+
+            layerHidden.setWeights();
+        }
+    }
+
+    private void updateWeightsHebbsRuleNoTeacher() {
+
+        // Modyfikacja wag - alogrytm wstecznej propagacji z regułą delta
+        layerOutput.setWeightsHebbNoTeacher();
+
+        for (Layer layerHidden : layersHidden) {
+
+            layerHidden.setWeightsHebbNoTeacher();
+        }
+    }
+
+    private void updateWeightsHebbsRuleWithTeacher() {
+
+        // Modyfikacja wag - alogrytm wstecznej propagacji z regułą delta
+        layerOutput.setWeightsHebbWithTeacher();
+
+        for (Layer layerHidden : layersHidden) {
+
+            layerHidden.setWeightsHebbWithTeacher();
+        }
     }
 
     public void testValidation(double[][] inputData){

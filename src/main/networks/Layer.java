@@ -103,6 +103,22 @@ public class Layer {
         }
     }
 
+    public void setWeightsHebbNoTeacher(){
+
+        for (Neuron neuron: neurons){
+
+            neuron.changeWeightHebbNoTeacher();
+        }
+    }
+
+    public void setWeightsHebbWithTeacher(){
+
+        for (Neuron neuron: neurons){
+
+            neuron.changeWeightHebbWithTeacher();
+        }
+    }
+
     public void changeErrorsBackwards(){
 
         for (Neuron neuron: neurons){

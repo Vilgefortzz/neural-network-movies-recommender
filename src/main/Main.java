@@ -86,6 +86,8 @@ public class Main {
 //        }
 
 
+        // ---------------------------------------------------------------------------------------------------------------------
+
         // Sieć neuronowa
 
         // Schemat: 1-2-1
@@ -97,6 +99,8 @@ public class Main {
 
         NeuralNetwork neuralNetwork = new NeuralNetwork(2, 50, 1, 2);
 
+        // Sieć neuronowa - różne metody uczenia sieci
+
         // Uczenie bramki logicznej XOR - sprawdzenie działania sieci wielowarstwowej
         // 1 perceptron nie jest w stanie się nauczyć
 
@@ -106,7 +110,8 @@ public class Main {
         double[][] expectedData ={{0},{1},{1},{0}};
 
 
-        neuralNetwork.applyLearningRule(inputData, expectedData, 50);
+        neuralNetwork.learning(inputData, expectedData, 50);
+        //neuralNetwork.learningHebb(inputData, 5);
         neuralNetwork.testValidation(inputData);
     }
 }

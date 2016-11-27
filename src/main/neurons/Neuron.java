@@ -30,6 +30,7 @@ public abstract class Neuron {
     // błąd
 
     protected double error;
+    protected double adalineError;
 
     // Suma sygnałów gotowych do funkcji aktywacji
 
@@ -81,6 +82,14 @@ public abstract class Neuron {
 
     public void setError(double error) {
         this.error = error;
+    }
+
+    public double getAdalineError() {
+        return adalineError;
+    }
+
+    public void setAdalineError(double adalineError) {
+        this.adalineError = adalineError;
     }
 
     public void setW1(double w1) {
@@ -188,9 +197,34 @@ public abstract class Neuron {
         bias += LEARNING_RATE * error * computeDerivative(outSignal) * 1.0;
     }
 
+    // Reguła Hebba ( bez nauczyciela )
+    public void changeWeightHebbNoTeacher(){
+
+        for (Connection connection: connections){
+            connection.inputWeight += LEARNING_RATE * connection.inputNeuron.outSignal;
+        }
+
+        bias += LEARNING_RATE * 1.0;
+    }
+
+    // Reguła Hebba ( z nauczycielem )
+    public void changeWeightHebbWithTeacher(){
+
+        for (Connection connection: connections){
+            connection.inputWeight += LEARNING_RATE * error * computeDerivative(outSignal) * connection.inputNeuron.outSignal;
+        }
+
+        bias += LEARNING_RATE * error * computeDerivative(outSignal) * 1.0;
+    }
+
     public void computeError(double expectedOutSignal){
 
         this.error = expectedOutSignal - this.outSignal;
+    }
+
+    public void computeAdalineError(double expectedOutSignal){
+
+        this.adalineError = expectedOutSignal - this.sumSignal;
     }
 
     public void computeOutputSignal(){

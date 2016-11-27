@@ -48,7 +48,7 @@ public class Controller {
         file = new DataLoader("/data_set/learning_set/users.dat");
         this.users = file.getLines();
 
-        // Finally moviesLearn + users and their rates = learningRuleWithBackPropagation set
+        // Finally moviesLearn + users and their rates = backPropagationLearning set
     }
 
     public void generateLearningData(int numberOfMovies, int numberOfUsers, int parameters) {
