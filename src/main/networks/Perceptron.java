@@ -2,6 +2,7 @@ package main.networks;
 
 import main.neurons.Neuron;
 
+import static main.Main.LEARNING_RATE;
 import static main.io.DataSave.*;
 
 public class Perceptron extends Neuron {

@@ -1,8 +1,15 @@
 package main;
 
+import main.io.DataSet;
+import main.networks.Hebbian;
 import main.networks.NeuralNetwork;
 
+import java.util.ArrayList;
+
 public class Main {
+
+    // szybkość uczenia
+    public static final double LEARNING_RATE = 0.6;
 
     public static void main(String[] args) {
 
@@ -97,21 +104,42 @@ public class Main {
         // 3.ilość neuronów na warstwie wyjściowej - 1 wyjście -> 1 neuron
         // 4.liczba warstw ukrytych
 
-        NeuralNetwork neuralNetwork = new NeuralNetwork(2, 50, 1, 2);
+//        NeuralNetwork neuralNetwork = new NeuralNetwork(2, 50, 1, 2);
+//
+//        // Sieć neuronowa - różne metody uczenia sieci
+//
+//        // Uczenie bramki logicznej XOR - sprawdzenie działania sieci wielowarstwowej
+//        // 1 perceptron nie jest w stanie się nauczyć
+//
+//        double[][] dataXOR = {{0, 0, 0}, {0, 1, 1}, {1, 0, 1}, {1, 1, 0}};
+//
+//        double[][] inputData = {{0,0},{0,1},{1,0},{1,1}};
+//        double[][] expectedData ={{0},{1},{1},{0}};
+//
+//
+//        neuralNetwork.learning(inputData, expectedData, 50);
+//        //neuralNetwork.learningHebb(inputData, 5);
+//        neuralNetwork.testValidation(inputData);
 
-        // Sieć neuronowa - różne metody uczenia sieci
+        // Uczenie Hebba bez nauczyciela
 
-        // Uczenie bramki logicznej XOR - sprawdzenie działania sieci wielowarstwowej
-        // 1 perceptron nie jest w stanie się nauczyć
+        double x,y;
+        ArrayList<DataSet> records = new ArrayList<DataSet>();
 
-        double[][] dataXOR = {{0, 0, 0}, {0, 1, 1}, {1, 0, 1}, {1, 1, 0}};
+        // Uczenie
 
-        double[][] inputData = {{0,0},{0,1},{1,0},{1,1}};
-        double[][] expectedData ={{0},{1},{1},{0}};
+        records.add(new DataSet(0.47,0.9));
+        //records.add(new DataSet(1,-1));
+        records.add(new DataSet(0.8,0.2));
+        //records.add(new DataSet(-1,-1));
+        Hebbian h = new Hebbian();
+        h.train(records, 50);
 
+        // Walidacja
 
-        neuralNetwork.learning(inputData, expectedData, 50);
-        //neuralNetwork.learningHebb(inputData, 5);
-        neuralNetwork.testValidation(inputData);
+        x = 0.5;
+        y = 0.78;
+
+        System.out.println("OUTPUT:"+h.test(x,y));
     }
 }

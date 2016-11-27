@@ -5,11 +5,9 @@ import main.networks.Layer;
 import java.util.ArrayList;
 import java.util.Random;
 
+import static main.Main.LEARNING_RATE;
+
 public abstract class Neuron {
-
-    // szybkość uczenia
-
-    public static final double LEARNING_RATE = 0.6;
 
     // sygnały wejściowe - dane wejściowe
 
