@@ -2,7 +2,6 @@ package main.io;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class DataLoader {
 
@@ -64,7 +63,7 @@ public class DataLoader {
         for (int j = 0; j < separateInput.length; j++) {
             line = separateInput[j];
 
-            input.add(new ArrayList<Double>());
+            input.add(new ArrayList<>());
             vectors = line.split("\t");
 
             // Going through the values of a vector
@@ -75,33 +74,6 @@ public class DataLoader {
             index++;
         }
 
-        return input;
-    }
-
-    public static HashMap<String, ArrayList<Double>> datStrToHashMap (String path) {
-        String inputStr = read(path);
-        HashMap<String, ArrayList<Double>> input = new HashMap<>();
-
-        String[] separateInput = inputStr.split("\n");
-        String[] vectors;
-        String line;
-        String vector;
-        ArrayList<Double> newVector;
-
-        // Going through the vectors
-        for (int j = 0; j < separateInput.length; j++) {
-            line = separateInput[j];
-
-            newVector = new ArrayList<>();
-            vectors = line.split("\t");
-
-            // Going through the values of a vector
-            for (int i = 1; i < vectors.length; i++) {
-                vector = vectors[i];
-                newVector.add(Double.parseDouble(vector));
-            }
-            input.put(vectors[0], newVector);
-        }
         return input;
     }
 }
