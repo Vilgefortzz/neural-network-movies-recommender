@@ -8,12 +8,12 @@ import java.util.Random;
 import static main.Main.LEARNING_RATE;
 import static main.io.DataSave.*;
 
-public class Hebbian {
+public class HebbianNetwork {
 
     private double w1,w2,signalSum,outSignal;
     private Random r = new Random();
 
-    public Hebbian() {
+    public HebbianNetwork() {
 
         w1=((double)r.nextInt(11))/10.0;
         w2=((double)r.nextInt(11))/10.0;

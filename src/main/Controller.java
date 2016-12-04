@@ -6,6 +6,8 @@ import main.networks.Perceptron;
 
 import java.util.ArrayList;
 
+import static main.io.DataLoader.readFile;
+
 public class Controller {
 
     // Files which have cut ( to learn and validate )
@@ -37,16 +39,9 @@ public class Controller {
 
     public void readInputData() {
 
-        DataLoader file;
-
-        file = new DataLoader("/data_set/learning_set/movies.dat");
-        this.moviesLearn = file.getLines();
-
-        file = new DataLoader("/data_set/validation_set/movies.dat");
-        this.moviesValidate = file.getLines();
-
-        file = new DataLoader("/data_set/learning_set/users.dat");
-        this.users = file.getLines();
+        this.moviesLearn = readFile("data_set/learning_set/movies.dat");
+        this.moviesValidate = readFile("data_set/validation_set/movies.dat");
+        this.users = readFile("data_set/learning_set/users.dat");
 
         // Finally moviesLearn + users and their rates = backPropagationLearning set
     }

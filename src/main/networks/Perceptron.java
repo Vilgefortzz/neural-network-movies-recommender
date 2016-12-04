@@ -19,15 +19,15 @@ public class Perceptron extends Neuron {
     protected double activationFunction(double sumSignal) {
 
         // Binarna unipolarna funkcja aktywacji
-//        if (sumSignal>=0)
-//            return 1;
-//
-//        return 0;
+        if (sumSignal>=0)
+            return 1;
+
+        return 0;
 
 //        // Sigmoidalna funkcja aktywacji
 //
-        double beta = 1.0;
-        return (1.0/(1.0 + Math.pow(Math.E,-(beta*sumSignal))));
+//        double beta = 1.0;
+//        return (1.0/(1.0 + Math.pow(Math.E,-(beta*sumSignal))));
     }
 
     @Override

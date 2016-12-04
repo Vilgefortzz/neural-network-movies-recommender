@@ -1,8 +1,7 @@
 package main;
 
 import main.io.DataSet;
-import main.networks.Hebbian;
-import main.networks.NeuralNetwork;
+import main.networks.HebbianNetwork;
 
 import java.util.ArrayList;
 
@@ -57,40 +56,40 @@ public class Main {
 
         // Rozwiązanie podproblemu
 
-//        Controller controller = new Controller();
-//
-//        controller.readInputData();
-//
-//        // Wygenerowanie zestawu uczącego z pliku
-//        controller.generateLearningData(175,1,2); // ilość filmów, ilość użytkowników, ilość parametrów
-//
-//        // Uczenie perceptronu
-//        controller.createPerceptron();
-//        controller.learningPerceptron(2,50); // ilość parametrów, ilość prób - powtarzanie uczenia
-//
-//        // Wygenerowanie zestawu danych walidujących z pliku
-//        controller.generateValidationData(75,1,2);
-//
-//        // Walidacja/Testowanie sieci przy użyciu zestawu danych walidujących z pliku
-//
-//        double[][] validation_data = controller.getInputDataValidate();
-//
-//        System.out.println("<<<<<<<<<<<<<<<< FILMS VALIDATION - RECOMMENDATION >>>>>>>>>>>>>>>>>");
-//        int test_number = 1;
-//
-//        for (int i=0;i<validation_data.length;i++){
-//
-//            double signal = controller.perceptron.testValidation(validation_data[i][0], validation_data[i][1]);
-//            String respond = ""; // recommended or not
-//
-//            if (signal == 1)
-//                respond = "Recommended";
-//            else if (signal == 0)
-//                respond = "Not recommended";
-//
-//            System.out.println("TEST " + test_number + ": " + "x1: " + validation_data[i][0] + " x2: " + validation_data[i][1] + ": " + respond);
-//            test_number++;
-//        }
+        Controller controller = new Controller();
+
+        controller.readInputData();
+
+        // Wygenerowanie zestawu uczącego z pliku
+        controller.generateLearningData(175,1,2); // ilość filmów, ilość użytkowników, ilość parametrów
+
+        // Uczenie perceptronu
+        controller.createPerceptron();
+        controller.learningPerceptron(2,50); // ilość parametrów, ilość prób - powtarzanie uczenia
+
+        // Wygenerowanie zestawu danych walidujących z pliku
+        controller.generateValidationData(75,1,2);
+
+        // Walidacja/Testowanie sieci przy użyciu zestawu danych walidujących z pliku
+
+        double[][] validation_data = controller.getInputDataValidate();
+
+        System.out.println("<<<<<<<<<<<<<<<< FILMS VALIDATION - RECOMMENDATION >>>>>>>>>>>>>>>>>");
+        int test_number = 1;
+
+        for (int i=0;i<validation_data.length;i++){
+
+            double signal = controller.perceptron.testValidation(validation_data[i][0], validation_data[i][1]);
+            String respond = ""; // recommended or not
+
+            if (signal == 1)
+                respond = "Recommended";
+            else if (signal == 0)
+                respond = "Not recommended";
+
+            System.out.println("TEST " + test_number + ": " + "x1: " + validation_data[i][0] + " x2: " + validation_data[i][1] + ": " + respond);
+            test_number++;
+        }
 
 
         // ---------------------------------------------------------------------------------------------------------------------
@@ -123,23 +122,31 @@ public class Main {
 
         // Uczenie Hebba bez nauczyciela
 
-        double x,y;
-        ArrayList<DataSet> records = new ArrayList<DataSet>();
+//        double x,y;
+//        ArrayList<DataSet> records = new ArrayList<>();
+//
+//        // Uczenie
+//
+//        records.add(new DataSet(0.47,0.9));
+//        //records.add(new DataSet(1,-1));
+//        records.add(new DataSet(0.8,0.2));
+//        //records.add(new DataSet(-1,-1));
+//        HebbianNetwork h = new HebbianNetwork();
+//        h.train(records, 50);
+//
+//        // Walidacja
+//
+//        x = 0.5;
+//        y = 0.78;
+//
+//        System.out.println("OUTPUT:"+h.test(x,y));
 
-        // Uczenie
 
-        records.add(new DataSet(0.47,0.9));
-        //records.add(new DataSet(1,-1));
-        records.add(new DataSet(0.8,0.2));
-        //records.add(new DataSet(-1,-1));
-        Hebbian h = new Hebbian();
-        h.train(records, 50);
 
-        // Walidacja
+        // Sieci Kohonena
 
-        x = 0.5;
-        y = 0.78;
 
-        System.out.println("OUTPUT:"+h.test(x,y));
+
+
     }
 }

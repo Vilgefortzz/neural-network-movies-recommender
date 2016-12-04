@@ -1,40 +1,107 @@
 package main.io;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class DataLoader {
 
-    private ArrayList<String> lines;
+    public static ArrayList<String> readFile(String path) {
 
-    public DataLoader(String path) {
+        ArrayList<String> records = new ArrayList<>();
 
         try {
-            readFile(path);
+            try (
+                    BufferedReader bufferedReader = new BufferedReader(new FileReader(path))
+            ) {
+                while (bufferedReader.ready()){
+                    records.add(bufferedReader.readLine());
+                }
+                bufferedReader.close();
+            }
+
         } catch (IOException | NullPointerException e) {
             System.err.println("Loading file is failed!!");
             System.exit(0);
         }
+
+        return records;
     }
 
-    public ArrayList<String> getLines() {
-        return lines;
-    }
+    private static String read(String path) {
 
-    private void readFile(String path) throws IOException, NullPointerException {
+        String text = "";
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(path));
+            String line = br.readLine();
 
-        lines = new ArrayList<>();
-
-        try (
-                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(
-                        getClass().getResourceAsStream(path)))
-        ) {
-            while (bufferedReader.ready()){
-                lines.add(bufferedReader.readLine());
+            while (line != null) {
+                text += line;
+                text += "\n";
+                line = br.readLine();
             }
-            bufferedReader.close();
         }
+        catch (FileNotFoundException e) {
+            System.out.println("Loading file is failed!!");
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        return text;
+    }
+
+    public static ArrayList<ArrayList<Double>> datStrToArrayList (String path) {
+        String inputStr = read(path);
+        ArrayList<ArrayList<Double>> input = new ArrayList<>();
+
+        String[] separateInput = inputStr.split("\n");
+        String[] vectors;
+        String line;
+        String vector;
+        int index = 0;
+
+        // Going through vectors
+        for (int j = 0; j < separateInput.length; j++) {
+            line = separateInput[j];
+
+            input.add(new ArrayList<Double>());
+            vectors = line.split("\t");
+
+            // Going through the values of a vector
+            for (int i = 1; i < vectors.length; i++) {
+                vector = vectors[i];
+                input.get(index).add(Double.parseDouble(vector));
+            }
+            index++;
+        }
+
+        return input;
+    }
+
+    public static HashMap<String, ArrayList<Double>> datStrToHashMap (String path) {
+        String inputStr = read(path);
+        HashMap<String, ArrayList<Double>> input = new HashMap<>();
+
+        String[] separateInput = inputStr.split("\n");
+        String[] vectors;
+        String line;
+        String vector;
+        ArrayList<Double> newVector;
+
+        // Going through the vectors
+        for (int j = 0; j < separateInput.length; j++) {
+            line = separateInput[j];
+
+            newVector = new ArrayList<>();
+            vectors = line.split("\t");
+
+            // Going through the values of a vector
+            for (int i = 1; i < vectors.length; i++) {
+                vector = vectors[i];
+                newVector.add(Double.parseDouble(vector));
+            }
+            input.put(vectors[0], newVector);
+        }
+        return input;
     }
 }
