@@ -6,6 +6,9 @@ import main.neurons.NeuronKohonen;
 import javax.swing.*;
 import java.util.ArrayList;
 
+import static main.io.DataSave.saveNumberOfEpochs;
+import static main.io.DataSave.saveTime;
+
 public class KohonenNetwork {
 
     private int numberofIterations; // liczba iteracji
@@ -26,7 +29,7 @@ public class KohonenNetwork {
         this.numberOfIterationsHeight = h;
         this.network = new NeuronKohonen[w][h];
         this.input = DataLoader.datStrToArrayList(path);
-        this.numberofIterations = 2000;
+        this.numberofIterations = 1000;
         this.screen = screen;
     }
 
@@ -81,6 +84,9 @@ public class KohonenNetwork {
         ArrayList<Double> oldVector = new ArrayList<>();
         ArrayList<Double> vector;
 
+        // Start stoper - time learning for one attempt
+        long start_time = System.currentTimeMillis();
+
         for (int t = 0; t < this.numberofIterations; t++) {
 
             do {
@@ -129,6 +135,12 @@ public class KohonenNetwork {
             }
         }
 
-        System.out.println("End of one iteration");
+        long end_time = System.currentTimeMillis();
+        long difference = end_time - start_time; // time in miliseconds
+
+        System.out.println(difference + " miliseconds");
+
+        saveTime("wyniki_4", 1, difference);
+        saveNumberOfEpochs("wyniki_4", 1, numberofIterations);
     }
 }
