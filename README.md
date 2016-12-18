@@ -39,7 +39,7 @@ i polecał jak najtrafniej filmy danemu użytkownikowi.
 [4] ~~Praca nad wielowarstwową siecią neuronową i neuronami wchodzącymi w jej skład,
     poprawienie metody uczenia itp.~~ [Zrealizowane 28.11.16]
 
-[5] Uczenie regułą Hebba - bez nauczyciela
+[5] ~~Uczenie regułą Hebba - bez nauczyciela~~ [Zrealizowane 28.11.16] 
 
     Podproblem do rozwiązania: Dopasowanie wzorca oraz grupowanie danych dla zestawu filmów.
     Grupowanie będzie się odbywało na zasadzie takiej, że za pomocą reguły Hebba, reguły Oji oraz
@@ -47,14 +47,16 @@ i polecał jak najtrafniej filmy danemu użytkownikowi.
     będzie zaimplementowana ) filmy będą klasyfikowane na podstawie ich rankingu od 1-10 a następnie 
     będą trafiały do danej grupy np. dobrych filmów, przeciętnych lub tych bardzo dobrych.
 
-[6] Sieci Kohonena. Wykorzystanie uczenia regułą WTA ( winner takes all )
+[6] ~~Sieci Kohonena. Wykorzystanie uczenia regułą WTA ( winner takes all )~~ [Zrealizowane 05.12.16]
 
-    Podproblem do rozwiązania: Tym razem będę zajmował się aktorami i aktorkami grającymi
-    w filmach. Przy użyciu tej sieci będę próbował stworzyć mapę 2D gdzie będzie widać jak
-    są przydzialani aktorzy do danych grup np. aktorzy dobrzy, przeciętni lub aktorzy ściśle
-    powiązani z jakimś gatunkiem filmu np. aktor komediowy czy aktorka specjalizująca się
-    w filmach romantycznych.
+    Podproblem do rozwiązania: Tym razem będę zajmował się klasyfikacją kolorów.
+    Dzięki temu będę mógł wizualnie zobaczyć proces klasyfikowania kolorów na
+    mapach 2D i wykorzystać to do rozwiązywania innych podproblemów.
 
-[7] Dalsza praca nad sieciami Kohonena. Wykorzystanie uczenia regułą WTA ( winner takes all )
+[7] ~~Dalsza praca nad sieciami Kohonena - SOMY. Wykorzystanie uczenia regułą WTM ( winner takes most )~~ [Zrealizowane 19.12.16]
+
+    Podproblem do rozwiązania: Wykorzystany zostanie problem z poprzedniego punktu harmonogramu
+    czyli klasyfikacja kolorów. Tym razem w celu rozwiązania tego problemu zostanie wykorzystany
+    algorytm WTM.
 
 ---

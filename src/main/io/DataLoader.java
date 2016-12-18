@@ -2,6 +2,7 @@ package main.io;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class DataLoader {
 
@@ -49,7 +50,7 @@ public class DataLoader {
         return text;
     }
 
-    public static ArrayList<ArrayList<Double>> datStrToArrayList (String path) {
+    public static ArrayList<ArrayList<Double>> datColorsToArrayList(String path) {
         String inputStr = read(path);
         ArrayList<ArrayList<Double>> input = new ArrayList<>();
 
@@ -72,6 +73,24 @@ public class DataLoader {
                 input.get(index).add(Double.parseDouble(vector));
             }
             index++;
+        }
+
+        return input;
+    }
+
+    public static HashMap<String, Double> datActorsToHashMap(String path) {
+        String inputStr = read(path);
+        HashMap<String, Double> input = new HashMap<>();
+
+        String[] separateInput = inputStr.split("\n");
+        String[] values;
+        String line;
+
+        for (int j = 0; j < separateInput.length; j++) {
+            line = separateInput[j];
+            values = line.split("\t");
+
+            input.put(values[1], Double.parseDouble(values[3]));
         }
 
         return input;

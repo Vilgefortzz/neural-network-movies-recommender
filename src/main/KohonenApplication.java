@@ -23,9 +23,12 @@ public class KohonenApplication {
         frame.setResizable(false);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-
-        // Algorytm WTA -> najwazniejsza czesc programu
+        // Algorytm WTA
         // Tutaj nastepuje grupowanie tych kolorow
-        screenWithColors.getKohonenNetwork().WTA();
+        //screenWithColors.getKohonenNetwork().WTA();
+
+        // Algorytm WTM
+        // Tutaj nastepuje grupowanie tych kolorow
+        screenWithColors.getKohonenNetwork().WTM();
     }
 }

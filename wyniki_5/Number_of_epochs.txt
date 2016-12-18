@@ -1,0 +1,6 @@
+Attempt number: 1
+Number of epochs/iterations: 1000
+Attempt number: 1
+Number of epochs/iterations: 1000
+Attempt number: 1
+Number of epochs/iterations: 1000

@@ -28,7 +28,7 @@ public class KohonenNetwork {
         this.numberOfIterationsWidth = w;
         this.numberOfIterationsHeight = h;
         this.network = new NeuronKohonen[w][h];
-        this.input = DataLoader.datStrToArrayList(path);
+        this.input = DataLoader.datColorsToArrayList(path);
         this.numberofIterations = 1000;
         this.screen = screen;
     }
@@ -59,6 +59,41 @@ public class KohonenNetwork {
             distance += Math.pow(vectorA.get(i) - vectorB.get(i), 2);
         }
         return Math.sqrt(distance);
+    }
+
+    private void updateNeighbors(NeuronKohonen BMU, ArrayList<Double> input, int t) {
+        double radiusMap = this.numberOfIterationsWidth / 2;
+        double lambda = this.numberofIterations / radiusMap;
+
+        double radius = radiusMap * Math.exp(-t / lambda);
+
+        int iMin = (BMU.getY() - radius) < 0 ? 0 : (int) (BMU.getY() - radius);
+        int iMax = (BMU.getY() + radius) > this.numberOfIterationsWidth ? this.numberOfIterationsWidth : (int) (BMU.getY() + radius);
+        int jMin = (BMU.getX() - radius) < 0 ? 0 : (int) (BMU.getX() - radius);
+        int jMax = (BMU.getX() + radius) > this.numberOfIterationsWidth ? this.numberOfIterationsWidth : (int) (BMU.getX() + radius);
+
+        for (int i = iMin; i < iMax; i++) {
+            for (int j = jMin; j < jMax; j++) {
+                NeuronKohonen n = this.network[i][j];
+                // nowa wartosc wspolczynnika uczenia
+                double Lt = this.learningRate * Math.exp(-t / lambda);
+
+                double sumDist = this.euclideDistance(BMU.getWeights(), n.getWeights());
+
+                double delta = sumDist / (2 * radius * radius);
+                //double theta = Math.exp(-1 * (sumDist / (2 * Math.pow(radius, 2))));
+                double theta = Math.exp(-delta);
+
+                for (int k = 0; k < BMU.getSizeWeights(); k++) {
+
+                    double value = n.getWeightI(k) + theta * Lt * (input.get(k) - n.getWeightI(k));
+
+                    n.setWeightI(k, value);
+                    if (value > 1.0)
+                        System.out.println("error");
+                }
+            }
+        }
     }
 
     // Neuron, który jest zwyciezca - najlepiej odpowie ( posiada najmniejszą wartość )
@@ -142,5 +177,45 @@ public class KohonenNetwork {
 
         saveTime("wyniki_4", 1, difference);
         saveNumberOfEpochs("wyniki_4", 1, numberofIterations);
+    }
+
+    public void WTM() {
+
+        ArrayList<Double> oldVector = new ArrayList<>();
+        ArrayList<Double> vector;
+
+        // Start stoper - time learning for one attempt
+        long start_time = System.currentTimeMillis();
+
+        for (int t = 0; t < this.numberofIterations; t++) {
+
+            do {
+                int randomInput = (int) (Math.random() * this.input.size());
+                vector = this.input.get(randomInput);
+            } while (oldVector.equals(vector));
+
+            oldVector = new ArrayList<>(vector);
+
+            NeuronKohonen BMU = this.getBMU(vector);
+
+            this.updateNeighbors(BMU, vector, t);
+
+            this.screen.repaint();
+
+            try {
+                Thread.sleep(10);
+            }
+            catch (InterruptedException e) {
+                System.out.println("Error during sleep : " + e);
+            }
+        }
+
+        long end_time = System.currentTimeMillis();
+        long difference = end_time - start_time; // time in miliseconds
+
+        System.out.println(difference + " miliseconds");
+
+        saveTime("wyniki_5", 1, difference);
+        saveNumberOfEpochs("wyniki_5", 1, numberofIterations);
     }
 }

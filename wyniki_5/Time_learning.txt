@@ -1,0 +1,6 @@
+Attempt number: 1
+Time: 10255 miliseconds
+Attempt number: 1
+Time: 10236 miliseconds
+Attempt number: 1
+Time: 10250 miliseconds
