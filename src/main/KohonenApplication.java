@@ -1,6 +1,6 @@
 package main;
 
-import main.graphics.ScreenWithColors;
+import main.kohonen.graphics.ScreenWithColors;
 
 import javax.swing.*;
 
@@ -26,6 +26,12 @@ public class KohonenApplication {
         // Algorytm WTA
         // Tutaj nastepuje grupowanie tych kolorow
         //screenWithColors.getKohonenNetwork().WTA();
+
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         // Algorytm WTM
         // Tutaj nastepuje grupowanie tych kolorow

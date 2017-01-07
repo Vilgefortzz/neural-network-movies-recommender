@@ -1,12 +1,12 @@
-package main.io;
+package main.hebb.neurons;
 
-public class DataSet {
+public class HebbNeuron {
 
     private double x;
     private double y;
     private double out;
 
-    public DataSet(double a, double b) {
+    public HebbNeuron(double a, double b) {
 
         x = a;
         y = b;

@@ -1,7 +1,7 @@
-package main.graphics;
+package main.kohonen.graphics;
 
-import main.networks.KohonenNetwork;
-import main.neurons.NeuronKohonen;
+import main.kohonen.networks.KohonenNetwork;
+import main.kohonen.neurons.NeuronKohonen;
 
 import javax.swing.*;
 import java.awt.*;

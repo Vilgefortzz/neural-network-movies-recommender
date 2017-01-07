@@ -1,6 +1,5 @@
 package main;
 
-import main.io.DataLoader;
 import main.neurons.McCullochPittsNeuron;
 import main.networks.Perceptron;
 
@@ -9,6 +8,9 @@ import java.util.ArrayList;
 import static main.io.DataLoader.readFile;
 
 public class Controller {
+
+    // szybkość uczenia
+    public static final double LEARNING_RATE = 0.6;
 
     // Files which have cut ( to learn and validate )
     private ArrayList<String> moviesLearn;

@@ -1,7 +1,7 @@
-package main.networks;
+package main.kohonen.networks;
 
 import main.io.DataLoader;
-import main.neurons.NeuronKohonen;
+import main.kohonen.neurons.NeuronKohonen;
 
 import javax.swing.*;
 import java.util.ArrayList;

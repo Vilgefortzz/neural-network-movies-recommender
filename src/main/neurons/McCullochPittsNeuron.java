@@ -2,7 +2,7 @@ package main.neurons;
 
 import java.util.Random;
 
-import static main.Main.LEARNING_RATE;
+import static main.Controller.LEARNING_RATE;
 import static main.io.DataSave.*;
 
 public class McCullochPittsNeuron extends Neuron{

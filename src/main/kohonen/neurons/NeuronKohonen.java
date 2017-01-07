@@ -1,4 +1,4 @@
-package main.neurons;
+package main.kohonen.neurons;
 
 import java.util.ArrayList;
 

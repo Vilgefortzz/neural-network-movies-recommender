@@ -58,5 +58,5 @@ i polecał jak najtrafniej filmy danemu użytkownikowi.
     Podproblem do rozwiązania: Wykorzystany zostanie problem z poprzedniego punktu harmonogramu
     czyli klasyfikacja kolorów. Tym razem w celu rozwiązania tego problemu zostanie wykorzystany
     algorytm WTM.
-
+    
 ---

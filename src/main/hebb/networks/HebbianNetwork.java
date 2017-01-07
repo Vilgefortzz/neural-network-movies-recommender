@@ -1,16 +1,16 @@
-package main.networks;
+package main.hebb.networks;
 
-import main.io.DataSet;
+import main.hebb.neurons.HebbNeuron;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-import static main.Main.LEARNING_RATE;
+import static main.Controller.LEARNING_RATE;
 import static main.io.DataSave.*;
 
 public class HebbianNetwork {
 
-    private double w1,w2,signalSum,outSignal;
+    private double w1, w2, signalSum, outSignal;
     private Random r = new Random();
 
     public HebbianNetwork() {
@@ -20,7 +20,7 @@ public class HebbianNetwork {
         signalSum = 0.0;
     }
 
-    public void train(ArrayList<DataSet> records, int attempts) {
+    public void train(ArrayList<HebbNeuron> records, int attempts) {
 
         for (int i=0;i<attempts;i++){
 
@@ -37,7 +37,7 @@ public class HebbianNetwork {
 
                 t++;
 
-                for(DataSet d:records) {
+                for(HebbNeuron d:records) {
 
                     signalSum = w1*d.getX() + w2*d.getY();
                     outSignal = sigmoidal(signalSum);
@@ -77,21 +77,21 @@ public class HebbianNetwork {
         saveAverageNumberOfEpochs("wyniki_3",attempts);
     }
 
-    private void standardHebbianRule(DataSet d){
+    private void standardHebbianRule(HebbNeuron d){
 
         w1 = w1 + LEARNING_RATE*d.getX()*d.getOut();
         w2 = w2 + LEARNING_RATE*d.getY()*d.getOut();
 
     }
 
-    private void hebbianRuleWithForgettingCoefficient(DataSet d){
+    private void hebbianRuleWithForgettingCoefficient(HebbNeuron d){
 
         w1 = LEARNING_RATE*d.getOut()*(d.getX()-d.getOut()*w1);
         w2 = LEARNING_RATE*d.getOut()*(d.getY()-d.getOut()*w2);
 
     }
 
-    private void ojiRule(DataSet d){
+    private void ojiRule(HebbNeuron d){
 
         w1 = (1-d.getOut())*w1 + LEARNING_RATE*d.getX()*d.getOut();
         w2 = (1-d.getOut())*w2 + LEARNING_RATE*d.getY()*d.getOut();

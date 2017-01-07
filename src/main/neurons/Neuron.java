@@ -5,7 +5,7 @@ import main.networks.Layer;
 import java.util.ArrayList;
 import java.util.Random;
 
-import static main.Main.LEARNING_RATE;
+import static main.Controller.LEARNING_RATE;
 
 public abstract class Neuron {
 
