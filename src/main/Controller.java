@@ -24,7 +24,7 @@ public class Controller {
 
     public McCullochPittsNeuron mcCullochPittsNeuron;
 
-    // Perceptron
+    // Neuron
 
     public Perceptron perceptron;
 

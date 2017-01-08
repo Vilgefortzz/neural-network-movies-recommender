@@ -1,6 +1,8 @@
-package main.neurons;
+package main.hopfield.neurons;
 
 import com.sun.istack.internal.NotNull;
+import main.hopfield.Neuron;
+
 import java.util.Random;
 
 public class Connection {
@@ -12,11 +14,6 @@ public class Connection {
 
         this.inputNeuron = inputNeuron;
         this.inputWeight = new Random().nextGaussian();
-    }
-
-    public double getWeightedSignal() {
-
-        return inputWeight * inputNeuron.getOutSignal(); // sygnał wejściowy dla neuronu
     }
 
     public void clearWeights(){
