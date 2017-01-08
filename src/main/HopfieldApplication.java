@@ -2,6 +2,8 @@ package main;
 
 import main.hopfield.networks.HopfieldNetwork;
 
+import static main.io.DataSave.saveTime;
+
 public class HopfieldApplication {
 
     public static void main(String[] args) {
@@ -25,9 +27,22 @@ public class HopfieldApplication {
 
         HopfieldNetwork hopfieldNetwork = new HopfieldNetwork(data[0].length);
 
+        // Start stoper - time learning for one attempt
+        long start_time = System.currentTimeMillis();
+
         hopfieldNetwork.setWeights(data);
-        int[] input = {-1,1,-1,-1,-1,-1,-1,-1,-1,-1,1,-1,-1,-1,1,-1}; // wejscie do gotowej sieci, niekompletny wzor do odtworzenia
+
+        // Uczenie sieci
+        int[] input = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,1,-1,-1,-1,1,-1}; // wejscie do gotowej sieci, niekompletny wzor do odtworzenia
+
         int[] output = hopfieldNetwork.returnOutput(input);  // wyjscie, odpowiedz sieci
+
+        long end_time = System.currentTimeMillis();
+        long difference = end_time - start_time; // time in miliseconds
+
+        System.out.println(difference + " miliseconds");
+
+        saveTime("wyniki_6", 1, difference);
 
         System.out.println();
         System.out.println("Input:");

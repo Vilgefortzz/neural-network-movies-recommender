@@ -58,5 +58,13 @@ i polecał jak najtrafniej filmy danemu użytkownikowi.
     Podproblem do rozwiązania: Wykorzystany zostanie problem z poprzedniego punktu harmonogramu
     czyli klasyfikacja kolorów. Tym razem w celu rozwiązania tego problemu zostanie wykorzystany
     algorytm WTM.
+ 
+[8] ~~Sieci rekurencyjne(sieci Hopfielda). Proste wykorzystanie sieci rekurencyjnych, uczenie sieci~~ [Zrealizowane 09.01.17]
     
+    Podproblem do rozwiązania: Wykorzystam problem rozpoznawania liter zdefiniowanych za pomocą 
+    znaków O i X na macierzy 4x4. Sieć Hopfielda na podstawie niepełnego wzorca będzie w stanie 
+    się "domyślić" - skojarzyć i zrekonstruować literę, na podstawie wcześniej nauczonych się 
+    przez tą sieć wzorców liter.
+    
+ 
 ---
