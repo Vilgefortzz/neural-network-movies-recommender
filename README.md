@@ -7,9 +7,7 @@ _Autor: Grzegorz Klimek Gr. Proj. 2 rok III IS WIMIiP_
 Opis projektu: 
 
 Projekt ten przewiduje stworzenie aplikacji, której zadaniem będzie
-polecanie filmów użytkownikowi na podstawie jego wyborów, wyborów innych
-użytkowników, ocen, gatunków. Program będzie się uczył nowych zachowań 
-i polecał jak najtrafniej filmy danemu użytkownikowi.
+polecanie filmów użytkownikowi na podstawie jego wyborów, ocen filmów.
 
 ---------------------------------------
 
@@ -66,5 +64,8 @@ i polecał jak najtrafniej filmy danemu użytkownikowi.
     się "domyślić" - skojarzyć i zrekonstruować literę, na podstawie wcześniej nauczonych się 
     przez tą sieć wzorców liter.
     
+[9] ~~Stworzenie i wygłoszenie prezentacji na temat algorytmu genetycznego~~ [Zrealizowane 16.01.17]
+
+[10] ~~Udokumentowanie projektu - przedstawienie rozpatrywanych podproblemów, wnioski itp.~~ [Zrealizowane 23.01.17]
  
 ---
